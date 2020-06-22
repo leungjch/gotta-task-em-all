@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native';
+
 import Header from './components/header'
 import TodoItem from './components/todoItem'
 import AddTodo from './components/addTodo.js'
 
 export default function App() {
   const [todos, setTodos] = useState([
-    { text: 'buy coffee', key: '1' },
-    { text: 'create an app', key: '2' },
-    { text: 'play on the switch', key: '3' }
+    { text: 'finish math homework ', key: '1' },
+    { text: 'text John about meetup', key: '2' },
+    { text: 'go to the gym', key: '3' },
+    { text: 'learn code', key: '4' },
+
   ]);
 
   const pressHandler = (key) => {
@@ -63,7 +66,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#a6dcef',
   },
   content: {
     padding: 40,
