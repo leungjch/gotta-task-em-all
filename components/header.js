@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export default function Header(){
+export default function Header(props){
     return (
         <View style={styles.header}>
-            <Text style={styles.title}> Task Catcher </Text>
+            <Text style={styles.title}> <Text>{props.title}</Text> </Text>
         </View>
     )
 }

@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function TodoItem({ item, pressHandler }){
+export default function TodoItem({ item, removeHandler, completeHandler, navigateDetailHandler, navigation }){
+    console.log("todo item" ,item)
     return (
-        <TouchableOpacity >
+        <TouchableOpacity onPress={() => {navigation.navigate("TodoDetails", item)}}>
             <View style={styles.item}>
-                <Icon name="check-box-outline-blank" color="#000000" size = {18} />
+                <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {18} onPress = {() => completeHandler(item.key)} />
                 <Text style={styles.itemText}>{item.text}</Text>
-                <Icon name="remove" size = {18} onPress={() => pressHandler(item.key)} style={styles.itemRemove} />
+                <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={styles.itemRemove} />
             </View>
         </TouchableOpacity>
     )

@@ -6,7 +6,8 @@ export const globalStyles = StyleSheet.create({
         padding: 20,
     },
     titleText: {
-        fontSize: 18,
+        textAlign: 'center',
+        fontSize: 20,
     },
     paragraph: {
         fontSize: 12,
