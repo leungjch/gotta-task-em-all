@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, Alert, Modal, TouchableWithoutFeedback, Keyboard} from 'react-native';
-import { GLView } from 'expo-gl';
 
 
 import Header from '../components/header'
