@@ -1,13 +1,5 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native';
-import Canvas from 'react-native-canvas';
-import {Dimensions } from "react-native";
-
-
 import Header from '../components/header'
-import TodoItem from '../components/todoItem'
-import { globalStyles } from '../styles/global'
-import getSprite from '../scripts/sketch'
+
 
 export default function TodoDetails({route, navigation}){
     const { text } = route.params
@@ -48,7 +40,7 @@ export default function TodoDetails({route, navigation}){
     
     return(
         <View>
-        <Header title={text}/>
+        <Header title={Your Creatures}/>
         <View style={styles.canvas}>
             <Canvas ref={handleCanvas} style={styles.canvas2} />
         </View>
@@ -64,7 +56,6 @@ export default function TodoDetails({route, navigation}){
 
 const styles = StyleSheet.create({
     canvas:{
-        marginTop: 10,
         alignItems: 'center',
         justifyContent: 'center',
         // flex: 1

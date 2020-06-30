@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert, Modal, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { GLView } from 'expo-gl';
+
 
 import Header from '../components/header'
 import TodoItem from '../components/todoItem'
 import AddTodo from '../components/addTodo.js'
 
+import Creature from '../scripts/Creature'
+
+
 export default function Home({ navigation }) {
   const [todos, setTodos] = useState([
-    { text: 'finish math homework ', isComplete: false, key: '1' },
-    { text: 'text John about meetup', isComplete: false, key: '2' },
-    { text: 'go to the gym', isComplete: false, key: '3' },
-    { text: 'learn code', isComplete: false, key: '4' },
-
+    { text: 'review for exams', isComplete: false, creature: new Creature(), key: '1' },
+    { text: 'text John about meetup', isComplete: false, creature: new Creature(), key: '2' },
+    { text: 'go to the gym', isComplete: false, creature: new Creature(), key: '3' },
+    { text: 'learn code', isComplete: false, creature: new Creature(), key: '4' },
   ]);
 
   const removeHandler = (key) => {
@@ -39,7 +43,7 @@ export default function Home({ navigation }) {
     {
       setTodos((prevTodos) => {
         return [
-          {text: text, key: Math.random().toString() },
+          {text: text, isComplete: false, creature: new Creature(), key: Math.random().toString() },
           ...prevTodos
         ];
       })
