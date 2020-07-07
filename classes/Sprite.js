@@ -130,13 +130,21 @@ export default class Sprite {
                     {
                         vals[j][this.spriteHeight-1-i] = c 
                     }
-                    if (this.symmetry === "diagonal")
+                    if (this.symmetry === "diagonal_right")
                     {
                         if (typeof(vals[i]) === 'undefined')
                         {
                             vals[i] = []
                         }
                         vals[i][j] = c 
+                    }
+                    if (this.symmetry === "diagonal_left")
+                    {
+                        if (typeof(vals[this.spriteHeight-1-i]) === 'undefined')
+                        {
+                            vals[this.spriteHeight-1-i] = []
+                        }
+                        vals[this.spriteHeight-1-i][this.spriteWidth-1-j] = c 
                     }
                     if (this.symmetry === "quad")
                     {
