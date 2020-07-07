@@ -1,9 +1,5 @@
 apply plugin: "com.android.application"
 
-// React native vector icons
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-
-
 import com.android.build.OutputFile
 
 /**
@@ -133,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.todo_gamify_project"
+        applicationId "com.app_project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

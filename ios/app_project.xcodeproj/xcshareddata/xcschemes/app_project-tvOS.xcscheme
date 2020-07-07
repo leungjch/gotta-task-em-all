@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Todo_Gamify_Project.app"
-               BlueprintName = "Todo_Gamify_Project"
-               ReferencedContainer = "container:Todo_Gamify_Project.xcodeproj">
+               BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+               BuildableName = "app_project-tvOS.app"
+               BlueprintName = "app_project-tvOS"
+               ReferencedContainer = "container:app_project.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "Todo_Gamify_ProjectTests.xctest"
-               BlueprintName = "Todo_Gamify_ProjectTests"
-               ReferencedContainer = "container:Todo_Gamify_Project.xcodeproj">
+               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
+               BuildableName = "app_project-tvOSTests.xctest"
+               BlueprintName = "app_project-tvOSTests"
+               ReferencedContainer = "container:app_project.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,10 +54,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Todo_Gamify_Project.app"
-            BlueprintName = "Todo_Gamify_Project"
-            ReferencedContainer = "container:Todo_Gamify_Project.xcodeproj">
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "app_project-tvOS.app"
+            BlueprintName = "app_project-tvOS"
+            ReferencedContainer = "container:app_project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,10 +71,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Todo_Gamify_Project.app"
-            BlueprintName = "Todo_Gamify_Project"
-            ReferencedContainer = "container:Todo_Gamify_Project.xcodeproj">
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "app_project-tvOS.app"
+            BlueprintName = "app_project-tvOS"
+            ReferencedContainer = "container:app_project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
