@@ -6,7 +6,7 @@ import Header from '../components/header'
 import TodoItem from '../components/todoItem'
 import AddTodo from '../components/addTodo.js'
 
-import Creature from '../scripts/Creature'
+import Creature from '../classes/Creature'
 
 
 export default function Home({ navigation }) {
@@ -31,7 +31,7 @@ export default function Home({ navigation }) {
   }
 
   const navigateDetailHandler = (myItem) => {
-    console.log("item is", myItem)
+    // console.log("item is", myItem)
     navigation.navigate('TodoDetails', myItem)
     // navigation.push('TodoDetails')
 

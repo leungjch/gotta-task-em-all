@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native';
-import Canvas from 'react-native-canvas';
 import {Dimensions } from "react-native";
 
 
@@ -9,76 +8,23 @@ import TodoItem from '../components/todoItem'
 import { globalStyles } from '../styles/global'
 import getSprite from '../scripts/sketch'
 
+import CreatureView from '../components/creatureView'
+
 export default function TodoDetails({route, navigation}){
     const { text } = route.params
     const { creature } = route.params
-
-    // console.log("text is", itemId)
-
-    const handleCanvas = (canvas) => {
-        if (canvas !== null){
-
-        var mySprite = getSprite();
-
-
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        let scale = 1
-
-        ctx.scale(scale, scale)
-
-        var canvas_gridsize = 8
-        canvas.width = creature.sprite.graphics.length*canvas_gridsize;
-        canvas.height = creature.sprite.graphics[0].length*canvas_gridsize;
-
-        for (var i = 0; i < creature.sprite.SpriteWidth; i++)
-        {
-            for (var j = 0; j < creature.sprite.SpriteHeight; j++)
-            {
-                if (creature.sprite.graphics[i][j].type !== "empty")
-                {
-                    ctx.fillStyle = creature.sprite.graphics[i][j].color;
-                    // ctx.strokeStyle = creature.sprite.graphics[i][j].color;
-                    ctx.fillRect(i*canvas_gridsize, j*canvas_gridsize, canvas_gridsize, canvas_gridsize);
-                }
-            }
-        }
-      }
-    }
-    
     return(
-        <View>
-        <Header title={text}/>
-        <View style={styles.canvas}>
-            <Canvas ref={handleCanvas} style={styles.canvas2} />
-        </View>
-
-        {/* <TodoItem /> */}
+        <View style={{flex: 1, flexDirection:'column'}}>
+            <Header title={text}/>
+            <CreatureView creature = {creature} />
         </View>
 
         
-        // <Text style= {globalStyles.titleText}>{text}</Text>
     )
 }
 
 
 const styles = StyleSheet.create({
-    canvas:{
-        marginTop: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        // flex: 1
-    
-    },
-    canvas2:{
-        // borderWidth: 2,
-        backgroundColor: "#fddfc5",
-        borderRadius: 5,
 
-
-        alignItems: 'center',
-        // justifyContent: 'center',
-        // flex: 1
-    }
 })
   

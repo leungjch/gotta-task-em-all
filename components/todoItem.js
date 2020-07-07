@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function TodoItem({ item, removeHandler, completeHandler, navigateDetailHandler, navigation }){
-    console.log("todo item" ,item)
     return (
         <TouchableOpacity onPress={() => {navigation.navigate("TodoDetails", item)}}>
             <View style={styles.item}>
@@ -14,6 +13,7 @@ export default function TodoItem({ item, removeHandler, completeHandler, navigat
         </TouchableOpacity>
     )
 }
+
 
 const styles = StyleSheet.create({
     item: {
@@ -35,3 +35,4 @@ const styles = StyleSheet.create({
         marginLeft: 'auto'
     }
 })
+
