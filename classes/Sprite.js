@@ -17,8 +17,7 @@ export default class Sprite {
 
         // Perlin noise parameter: lower = smoother, higher = spikier
         // Between 0 and 1
-        // this.noiseScale = noisescale;
-        this.noiseScale = 0.05;
+        this.noiseScale = noisescale;
 
         // Perlin noise parameter - each creature has different seed
         this.seed = seed;
@@ -30,7 +29,7 @@ export default class Sprite {
         this.colors = []
         for (let i = 0; i < this.nColors; i++)
         {
-            this.colors.push([255,255-50*i,255])
+            this.colors.push([Math.ceil(Math.random()*200),Math.ceil(Math.random()*200),Math.ceil(Math.random()*200)])
           // colors.push(color(255, Math.random()*255, Math.random()*255))
         }
 
@@ -48,21 +47,48 @@ export default class Sprite {
     {
         var centerX = this.spriteWidth/2;
         var centerY = this.spriteHeight/2;
-    
+
+        var iterW;
+        var iterH;
+
+        if (this.symmetry === "none" || this.symmetry === "diagonal_left" || this.symmetry === "diagonal_right")
+        {
+            iterW = this.spriteWidth;
+            iterH = this.spriteHeight;
+        }
+        if (this.symmetry === "vertical")
+        {
+            iterW = this.spriteWidth/2;
+            iterH = this.spriteHeight;
+        }
+        if (this.symmetry === "horizontal")
+        {
+            iterW = this.spriteWidth;
+            iterH = this.spriteHeight/2;
+        }
+        if (this.symmetry === "quad")
+        {
+            iterW = this.spriteWidth/2;
+            iterH = this.spriteHeight/2;
+        }
         noise.seed(this.seed);
-        
+
         for (var frame = 0; frame < nFrames; frame++)
         {
             // Store noise values
             vals = [];
 
             // Iterate through Sprite and generate values
-            for (var j = 0; j < this.spriteWidth/2; j++)
+            for (var j = 0; j < iterW; j++)
             {
                 vals[j] = []
+                
+                if (this.symmetry === "vertical" || this.symmetry === "quad")
+                {
+                    vals[this.spriteWidth-1-j] = []
+                }
 
-                vals[this.spriteWidth-1-j] = []
-                for (var i = 0; i < this.spriteHeight; i++)
+                for (var i = 0; i < iterH; i++)
                 {
                     // Sample perlin or simplex noise
                     // val = (noise.simplex3(j*noiseScale,i*noiseScale, t)+1)/2;
@@ -96,7 +122,33 @@ export default class Sprite {
                     }
 
                     vals[j][i] = c
-                    vals[this.spriteWidth-1-j][i] = c
+                    if (this.symmetry === "vertical")
+                    {
+                        vals[this.spriteWidth-1-j][i] = c
+                    }
+                    if (this.symmetry === "horizontal")
+                    {
+                        vals[j][this.spriteHeight-1-i] = c 
+                    }
+                    if (this.symmetry === "diagonal")
+                    {
+                        if (typeof(vals[i]) === 'undefined')
+                        {
+                            vals[i] = []
+                        }
+                        vals[i][j] = c 
+                    }
+                    if (this.symmetry === "quad")
+                    {
+                        // top right
+                        vals[this.spriteWidth-1-j][i] = c
+
+                        // bottom left
+                        vals[j][this.spriteHeight-1-i] = c 
+
+                        // bottom right
+                        vals[this.spriteWidth-1-j][this.spriteHeight-1-i] = c 
+                    }
                 }
             }
             // oscillate

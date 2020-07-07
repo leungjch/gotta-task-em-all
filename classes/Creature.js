@@ -1,5 +1,5 @@
 import Sprite from './Sprite'
-
+import randn_bm from '../scripts/custom_math_functions'
 export default class Creature {
     constructor()
     {
@@ -8,9 +8,15 @@ export default class Creature {
 
         // Common, uncommon, rare, epic, legendary
         this.rarity = 0;
+
         
+        // Size is correlated with rarity
+        
+
+        // min size: 4
+        var randSize = Math.ceil(Math.random()*32+3)
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
-        this.sprite = new Sprite(32, 32, 'vertical', Math.random(), 5, 0.005, Math.random(), 60)
+        this.sprite = new Sprite(randSize, randSize, 'quad', Math.random()*0.5, Math.ceil(Math.random()*10), 0.05, Math.random(), Math.ceil(Math.random()*500))
     }
 
 }

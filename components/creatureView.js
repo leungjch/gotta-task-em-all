@@ -84,14 +84,14 @@ export default function CreatureView({creature}) {
   // Insert image data
   for(var i=0;i<imgdatalen/4;i++){  //iterate over every pixel in the canvas
   
-  // Shade right hand edge
-  if (vals[k][l][1] !== 255 && (k+1)%SpriteWidth !== 0 && l < SpriteHeight && vals[k+1][l][1] === 255)
-  {
-    vals[k+1][l][0] = 255
-    vals[k+1][l][1] = 255
-    vals[k+1][l][2] = 0
+  // // Shade right hand edge
+  // if (vals[k][l][1] !== 255 && (k+1)%SpriteWidth !== 0 && l < SpriteHeight && vals[k+1][l][1] === 255)
+  // {
+  //   vals[k+1][l][0] = 255
+  //   vals[k+1][l][1] = 255
+  //   vals[k+1][l][2] = 0
     
-  }
+  // }
   imgdata.data[4*i] = Math.floor(vals[k][l][0]);    // RED (0-255)
   imgdata.data[4*i+1] = Math.floor(vals[k][l][1]);    // GREEN (0-255)
   imgdata.data[4*i+2] = Math.floor(vals[k][l][2]);    // BLUE (0-255)
