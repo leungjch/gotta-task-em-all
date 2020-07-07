@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native';
-import Canvas from 'react-native-canvas';
 import {Dimensions } from "react-native";
 
 
@@ -11,15 +10,13 @@ import getSprite from '../scripts/sketch'
 
 import CreatureView from '../components/creatureView'
 
-
 export default function TodoDetails({route, navigation}){
     const { text } = route.params
     const { creature } = route.params
-
     return(
         <View style={{flex: 1, flexDirection:'column'}}>
             <Header title={text}/>
-            <CreatureView/>
+            <CreatureView creature = {creature} />
         </View>
 
         

@@ -31,7 +31,7 @@ export default function Home({ navigation }) {
   }
 
   const navigateDetailHandler = (myItem) => {
-    console.log("item is", myItem)
+    // console.log("item is", myItem)
     navigation.navigate('TodoDetails', myItem)
     // navigation.push('TodoDetails')
 

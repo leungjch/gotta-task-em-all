@@ -9,7 +9,8 @@ export default class Creature {
         // Common, uncommon, rare, epic, legendary
         this.rarity = 0;
         
-        this.sprite = new Sprite()
+        //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
+        this.sprite = new Sprite(64, 64, 'vertical', Math.random(), 5, 0.1, Math.random(), 10)
     }
 
 }
