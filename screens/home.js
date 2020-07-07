@@ -6,7 +6,7 @@ import Header from '../components/header'
 import TodoItem from '../components/todoItem'
 import AddTodo from '../components/addTodo.js'
 
-import Creature from '../scripts/Creature'
+import Creature from '../classes/Creature'
 
 
 export default function Home({ navigation }) {
