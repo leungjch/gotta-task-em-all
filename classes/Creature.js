@@ -10,7 +10,7 @@ export default class Creature {
         this.rarity = 0;
         
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
-        this.sprite = new Sprite(64, 64, 'vertical', Math.random(), 5, 0.1, Math.random(), 10)
+        this.sprite = new Sprite(32, 32, 'vertical', Math.random(), 5, 0.005, Math.random(), 60)
     }
 
 }

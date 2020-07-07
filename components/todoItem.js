@@ -14,6 +14,7 @@ export default function TodoItem({ item, removeHandler, completeHandler, navigat
     )
 }
 
+
 const styles = StyleSheet.create({
     item: {
         // backgroundColor: "#caf0f8",
@@ -34,3 +35,4 @@ const styles = StyleSheet.create({
         marginLeft: 'auto'
     }
 })
+

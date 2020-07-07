@@ -17,7 +17,8 @@ export default class Sprite {
 
         // Perlin noise parameter: lower = smoother, higher = spikier
         // Between 0 and 1
-        this.noiseScale = noisescale;
+        // this.noiseScale = noisescale;
+        this.noiseScale = 0.05;
 
         // Perlin noise parameter - each creature has different seed
         this.seed = seed;
@@ -33,8 +34,12 @@ export default class Sprite {
           // colors.push(color(255, Math.random()*255, Math.random()*255))
         }
 
+        // latest time
+        this.time = 0;
+
         // Stores the animation frames of a creature
-        this.spriteSheet = this.generateSpritesheet(nFrames)
+        this.spriteSheet = [] 
+        this.generateSpritesheet(nFrames)
 
     }
 
@@ -46,11 +51,6 @@ export default class Sprite {
     
         noise.seed(this.seed);
         
-
-        var t = 0;
-        var inc = 0;
-
-        var sSheet = []
         for (var frame = 0; frame < nFrames; frame++)
         {
             // Store noise values
@@ -66,7 +66,7 @@ export default class Sprite {
                 {
                     // Sample perlin or simplex noise
                     // val = (noise.simplex3(j*noiseScale,i*noiseScale, t)+1)/2;
-                    val = (noise.perlin3(j*this.noiseScale,i*this.noiseScale, t)+1)/2;
+                    val = (noise.perlin3(j*this.noiseScale,i*this.noiseScale, this.time)+1)/2;
                     // Get pixel distance from center
                     var distance = 1-Math.sqrt((j-centerX)**2+(i-centerY)**2)/Math.sqrt(centerX**2+centerY**2);
 
@@ -99,11 +99,12 @@ export default class Sprite {
                     vals[this.spriteWidth-1-j][i] = c
                 }
             }
-            t += this.speed
+            // oscillate
+            this.time = (Math.sin((Math.PI/nFrames)*frame))
+            
             // Add a frame of the sprite animation
-            sSheet.push(vals)
+            this.spriteSheet.push(vals)
         }
-        return sSheet;
     }
     
 
