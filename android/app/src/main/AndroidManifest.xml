@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.todo_gamify_project">
+  package="com.app_project">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

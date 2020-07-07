@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'Todo_Gamify_Project' do
-  # Pods for Todo_Gamify_Project
+target 'app_project' do
+  # Pods for app_project
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -77,7 +77,8 @@ target 'Todo_Gamify_Project' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'Todo_Gamify_ProjectTests' do
+
+  target 'app_projectTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -94,10 +95,10 @@ target 'Todo_Gamify_Project' do
   end
 end
 
-target 'Todo_Gamify_Project-tvOS' do
-  # Pods for Todo_Gamify_Project-tvOS
+target 'app_project-tvOS' do
+  # Pods for app_project-tvOS
 
-  target 'Todo_Gamify_Project-tvOSTests' do
+  target 'app_project-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

@@ -53,7 +53,6 @@ export default function Home({ navigation }) {
         {text: 'OK', onPress: () => console.log('Alert closed')}
       ])
     }
-
   }
 
   return (
@@ -61,7 +60,6 @@ export default function Home({ navigation }) {
       Keyboard.dismiss();
       console.log('Dismissed keyboard')
     }}>
-
       <View style={styles.container}>
         <Header title={"Your tasks"}/>
         <View style={styles.content}>

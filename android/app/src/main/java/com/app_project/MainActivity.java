@@ -1,4 +1,4 @@
-package com.todo_gamify_project;
+package com.app_project;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Todo_Gamify_Project";
+    return "app_project";
   }
 }

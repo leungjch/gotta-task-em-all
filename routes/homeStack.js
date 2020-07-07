@@ -6,10 +6,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/home';
 import TodoDetails from '../screens/todoDetails';
 
+// const screens = {
+//   Home: {
+//     screen: Home,
+//   },
+//   TodoDetails: {
+//     screen: TodoDetails,
+//   }
+// }
 
 const Stack = createStackNavigator();
 
 // export default createAppContainer(HomeStack)
+
+
 export default function Navigate()
 {
     return (
