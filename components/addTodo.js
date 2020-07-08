@@ -27,6 +27,8 @@ const itemSchema = yup.object({
 export default function AddTodo({ submitHandler }){
     return (
         <View>
+            <Text style={styles.instructionText}>Fill in the input fields. </Text>
+            <Text style={styles.instructionText2} >* means the field is required</Text>
            <Formik
                 initialValues={{task: '', note: '', priority: ''}} //add due-date and repetition later
                 validationSchema={itemSchema}
@@ -39,7 +41,7 @@ export default function AddTodo({ submitHandler }){
                    <View>
                        <TextInput  
                             style={globalStyles.input}
-                            placeholder='Task...'
+                            placeholder='* Task...'
                             onChangeText={props.handleChange('task')}
                             value={props.values.task}
                             onBlur={props.handleBlur('task')}
@@ -50,7 +52,7 @@ export default function AddTodo({ submitHandler }){
 
                         <TextInput  
                             style={globalStyles.input}
-                            placeholder='Task...'
+                            placeholder='Notes...'
                             miltiline minHeight={60}
                             onChangeText={props.handleChange('note')}
                             value={props.values.note}
@@ -68,7 +70,7 @@ export default function AddTodo({ submitHandler }){
                             {props.touched.priority && props.errors.priority}
                         </Text>
 
-                        <Button title="Create Item" onPress={props.handleSubmit} />
+                        <Button title="Create Task" onPress={props.handleSubmit} />
 
                    </View>
                )}
@@ -84,5 +86,15 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         borderBottomWidth: 1,
         borderBottomColor: '#ddd'
-    }
+    },
+    instructionText: {
+        marginTop: 10,
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    instructionText2: {
+        marginTop: 5,
+        marginBottom: 10,
+        textAlign: 'center',
+    },
 })
