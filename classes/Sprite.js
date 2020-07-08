@@ -1,6 +1,4 @@
-
 import {module} from '../scripts/perlin'
-
 
 // Sprite generation
 export default class Sprite {

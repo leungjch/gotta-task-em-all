@@ -8,11 +8,9 @@ export default class Creature {
 
         // Common, uncommon, rare, epic, legendary
         this.rarity = 0;
-
-        
+    
         // Size is correlated with rarity
         
-
         // min size: 4
         var randSize = 16
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
