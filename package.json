@@ -14,8 +14,10 @@
     "@react-navigation/bottom-tabs": "^5.6.1",
     "@react-navigation/native": "^5.6.1",
     "@react-navigation/stack": "^5.6.2",
+    "formik": "^2.1.4",
     "link": "^0.1.5",
     "react": "16.11.0",
+    "react-datepicker": "^3.0.0",
     "react-native": "^0.62.2",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.9.0",
@@ -24,7 +26,8 @@
     "react-native-vector-icons": "^7.0.0",
     "react-native-webview": "^10.3.2",
     "react-navigation": "^4.4.0",
-    "react-navigation-stack": "^2.8.2"
+    "react-navigation-stack": "^2.8.2",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
