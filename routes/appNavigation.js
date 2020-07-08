@@ -14,18 +14,23 @@ import Progress from '../screens/progressProfile';
 
 
 
-
 const HomeStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
 
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-     <HomeStack.Screen name="Tasks" component={Home} /> 
+     <HomeStack.Screen name="Your Tasks" component={Home} 
+      options={{headerStyle: {
+          backgroundColor: '#0096c7'
+      }, 
+      headerTintColor: '#fff',}} /> 
      <HomeStack.Screen name="TodoDetails" component={TodoDetails} />
     </HomeStack.Navigator>
    );
  }
+ 
 
 export default function Navigate()
 {

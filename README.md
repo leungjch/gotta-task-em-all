@@ -10,3 +10,6 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
 - @react-navigation/bottom-tabs (if react-navigation not already installed)
 - react-native-webview
 - react-native-vector-icons
+- formik
+- yup
+
