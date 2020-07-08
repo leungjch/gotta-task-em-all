@@ -1,5 +1,14 @@
-import Header from '../components/header'
+import * as React from 'react';
 
+import Header from '../components/header'
+import {
+    SafeAreaView,
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    StatusBar,
+  } from 'react-native';
 
 export default function CreatureDex({route, navigation}){
     const { todos } = route.params
@@ -7,7 +16,7 @@ export default function CreatureDex({route, navigation}){
     
     return(
         <View>
-        <Header title={Your Creatures}/>
+        <Header title={'Your Creatures'}/>
         <View style={styles.canvas}>
         </View>
 
@@ -18,7 +27,6 @@ export default function CreatureDex({route, navigation}){
         // <Text style= {globalStyles.titleText}>{text}</Text>
     )
 }
-
 
 const styles = StyleSheet.create({
     canvas:{

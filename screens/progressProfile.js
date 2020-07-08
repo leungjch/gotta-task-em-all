@@ -3,10 +3,11 @@ import React from 'react';
 
 import { Text, View } from 'react-native';
 
-export default function Progress() {
+export default function Progress({todos}) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Your Progress</Text>
+        
       </View>
     );
   }

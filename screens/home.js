@@ -61,7 +61,7 @@ export default function Home({ navigation }) {
       console.log('Dismissed keyboard')
     }}>
       <View style={styles.container}>
-        <Header title={"Your tasks"}/>
+        <Header title={"Your Tasks"}/>
         <View style={styles.content}>
           <AddTodo submitHandler={submitHandler} />
           <View style={styles.list}>
