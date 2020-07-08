@@ -8,10 +8,10 @@ import Creature from '../classes/Creature'
 
 export default function Home({ navigation }) {
   const [todos, setTodos] = useState([
-    { task: 'Default 1', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '1', subItems: [{task: 'Default sub 1.1', note: '', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
-    { task: 'Default 2', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '2', subItems: [{task: 'Default sub 1.2', note: '', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
-    { task: 'Default 3', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '3', subItems: [{task: 'Default sub 1.3', note: '', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
-    { task: 'Default 4', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '4', subItems: [{task: 'Default sub 1.4', priority: '0', isComplete: false, key: Math.random().toString()}] },
+    { task: 'Default 1', note: '', priority: '0', isComplete: false, key: '1', subItems: [{task: 'Default sub 1.1', note: '', priority: '0', isComplete: false, key: Math.random().toString()}]},
+    { task: 'Default 2', note: '', priority: '0', isComplete: false, key: '2', subItems: [{task: 'Default sub 1.2', note: '', priority: '0', isComplete: false, key: Math.random().toString()}]},
+    { task: 'Default 3', note: '', priority: '0', isComplete: false, key: '3', subItems: [{task: 'Default sub 1.3', note: '', priority: '0', isComplete: false, key: Math.random().toString()}] },
+    { task: 'Default 4', note: '', priority: '0', isComplete: false, key: '4', subItems: [{task: 'Default sub 1.4', priority: '0', isComplete: false, key: Math.random().toString()}] },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
@@ -57,25 +57,6 @@ export default function Home({ navigation }) {
   }
 
   return (
-<<<<<<< HEAD
-    <TouchableWithoutFeedback onPress={() => {
-      Keyboard.dismiss();
-      console.log('Dismissed keyboard')
-    }}>
-      <View style={styles.container}>
-        <Header title={"Your Tasks"}/>
-        <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler} />
-          <View style={styles.list}>
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem item={item} removeHandler={removeHandler} completeHandler = {completeHandler} navigation={navigation}
-               />
-              )}
-            />
-          </View>
-=======
     <View style={styles.container}>
       <View style={styles.content}>
 
@@ -94,16 +75,15 @@ export default function Home({ navigation }) {
           <FlatList
             data={todos}
             renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => {navigation.navigate("Task Details", item)}}>
+              <TouchableOpacity onPress={() => {navigation.navigate("Task Details", {item: item})}}>
                 <View style={styles.item}>
-                    <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {18} onPress = {() => completeHandler(item.key, item)} />
+                    <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item.key, item)} />
                     <Text style={styles.itemText}>{item.task} </Text>
                     <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={styles.itemRemove} />
                 </View>
             </TouchableOpacity>
             )}
           />
->>>>>>> 08c37aca2259f34bbd6f596d4e37c622dadbaa0d
         </View>
       </View>
     </View>

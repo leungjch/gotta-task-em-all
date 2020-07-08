@@ -9,10 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '../screens/home';
 import TodoDetails from '../screens/todoDetails';
 import Progress from '../screens/progressProfile';
-<<<<<<< HEAD
 import CreatureDex from '../screens/creatureDex';
-=======
->>>>>>> 08c37aca2259f34bbd6f596d4e37c622dadbaa0d
 
 const HomeStack = createStackNavigator();
 const ProgressStack = createStackNavigator();
@@ -22,10 +19,6 @@ const Tab = createBottomTabNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-<<<<<<< HEAD
-     <HomeStack.Screen name="Tasks" component={Home} options={{headerShown: false}}/> 
-     <HomeStack.Screen name="TodoDetails" component={TodoDetails} />
-=======
       <HomeStack.Screen name="Tasks" component={Home} 
         options={{
           headerStyle: {
@@ -40,7 +33,6 @@ function HomeStackScreen() {
           }, 
           headerTintColor: '#fff',
         }} />
->>>>>>> 08c37aca2259f34bbd6f596d4e37c622dadbaa0d
     </HomeStack.Navigator>
    );
  }
@@ -92,13 +84,7 @@ export default function Navigate()
             <Tab.Screen name="CreatureDex" component={CreatureDex} />
 
             <Tab.Screen name="Tasks" component={HomeStackScreen} />
-<<<<<<< HEAD
-
-            <Tab.Screen name="Progress" component={Progress} />
-
-=======
             <Tab.Screen name="Progress" component={ProgressStackScreen} />
->>>>>>> 08c37aca2259f34bbd6f596d4e37c622dadbaa0d
           </Tab.Navigator>
         </NavigationContainer>
       );

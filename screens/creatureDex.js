@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Header from '../components/header'
 import {
     SafeAreaView,
     StyleSheet,
@@ -11,21 +10,15 @@ import {
   } from 'react-native';
 
 export default function CreatureDex({route, navigation}){
-    const { todos } = route.params
-    // console.log("text is", itemId)
+    // const { todos } = route.params
     
     return(
         <View>
-        <Header title={'Your Creatures'}/>
         <View style={styles.canvas}>
         </View>
 
-        {/* <TodoItem /> */}
         </View>
-
-        
-        // <Text style= {globalStyles.titleText}>{text}</Text>
-    )
+        )
 }
 
 const styles = StyleSheet.create({
