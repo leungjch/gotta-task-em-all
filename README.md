@@ -9,3 +9,4 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
 - react-navigation-stack
 - react-native-webview
 - react-native-vector-icons
+- @react-native/bottom-tabs
