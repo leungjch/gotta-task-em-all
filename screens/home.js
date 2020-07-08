@@ -10,25 +10,30 @@ import Creature from '../classes/Creature'
 
 export default function Home({ navigation }) {
   const [todos, setTodos] = useState([
-    { task: 'review for exams', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '1' },
-    { task: 'text John about meetup', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '2' },
-    { task: 'go to the gym', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '3' },
-    { task: 'learn code', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '4' },
+    { task: 'Default 1', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '1' },
+    { task: 'Default 2', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '2' },
+    { task: 'Default 3', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '3' },
+    { task: 'Default 4', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '4' },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
 
-  const removeHandler = (key) => {
+  const removeHandler = (key) => { //removes item from list
     setTodos(prevTodos => {
       return prevTodos.filter(todo => todo.key != key);
     });
   };
 
-  const completeHandler = (key) => {
-    setTodos(todos.map(item => {
-      if(item.key !== key) return item 
-      return {...item, isComplete: !item.isComplete}
-    }) )
+  const addCompleteItem = (item) => { //adds completed item to the bottom of the list
+    item.isComplete = true;
+    setTodos((currentTodos) => {
+      return [...currentTodos, item];
+    })
+  };
+
+  const completeHandler = (key, item) => {
+    removeHandler(key);
+    addCompleteItem(item);
   }
 
   const navigateDetailHandler = (myItem) => {
@@ -51,6 +56,7 @@ export default function Home({ navigation }) {
     setTodos((currentTodos) => {
       return [item, ...currentTodos];
     })
+    setModalOpen(false);
   }
 
   return (

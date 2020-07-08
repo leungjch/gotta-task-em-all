@@ -6,7 +6,7 @@ export default function TodoItem({ item, removeHandler, completeHandler, navigat
     return (
         <TouchableOpacity onPress={() => {navigation.navigate("TodoDetails", item)}}>
             <View style={styles.item}>
-                <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {18} onPress = {() => completeHandler(item.key)} />
+                <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {18} onPress = {() => completeHandler(item.key, item)} />
                 <Text style={styles.itemText}>{item.task} </Text>
                 <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={styles.itemRemove} />
             </View>
