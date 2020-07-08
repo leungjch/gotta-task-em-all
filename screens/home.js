@@ -3,8 +3,9 @@ import { StyleSheet, View, FlatList, SectionList, Text, TouchableOpacity, Button
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import AddTodo from '../components/addTodo.js'
-
-import Creature from '../classes/Creature'
+import Card from '../shared/card';
+import Creature from '../classes/Creature';
+import { globalStyles } from '../styles/global';
 
 export default function Home({ navigation }) {
   const [todos, setTodos] = useState([
@@ -60,11 +61,13 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <View style={styles.content}>
 
-        <Modal visible={modalOpen} animationType='slide' style={styles.modal}>
+        <Modal visible={modalOpen} animationType='slide' style={globalStyles.modal}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.modalContent}>
-              <Icon style={styles.modalToggle} name="close" size={30} onPress={() => setModalOpen(false)} />
-              <AddTodo submitHandler={addItem} />
+            <View style={globalStyles.modalContent}>
+              <Icon style={globalStyles.modalToggle} color='#fff' name="close" size={30} onPress={() => setModalOpen(false)} />
+              <Card>
+                <AddTodo submitHandler={addItem} />
+              </Card>
             </View>
           </TouchableWithoutFeedback>
         </Modal>
@@ -76,10 +79,10 @@ export default function Home({ navigation }) {
             data={todos}
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => {navigation.navigate("Task Details", {item: item})}}>
-                <View style={styles.item}>
+                <View style={globalStyles.item}>
                     <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item.key, item)} />
-                    <Text style={styles.itemText}>{item.task} </Text>
-                    <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={styles.itemRemove} />
+                    <Text style={globalStyles.itemText}>{item.task} </Text>
+                    <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={globalStyles.itemRemove} />
                 </View>
             </TouchableOpacity>
             )}
@@ -103,34 +106,4 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
   },
-  modalContent: {
-    padding: 20,
-    flex: 1,
-  },
-  modalToggle: {
-    alignSelf: 'center',
-    marginTop: 30,
-    marginBottom: 0,
-  },
-  item: {
-    // backgroundColor: "#caf0f8",
-    backgroundColor: "#fff",
-    padding: 16,
-    borderRadius: 6,
-    elevation: 3,
-    shadowOffset: { width: 1, height: 1 },
-    shadowColor: '#333',
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-    marginHorizontal: 4,
-    marginVertical: 6,
-    flexDirection: 'row',
-
-},
-itemText: {
-    marginLeft: 10,
-},
-itemRemove: {
-    marginLeft: 'auto'
-}
 });
