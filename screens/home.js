@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, FlatList, Text, TouchableOpacity, Button, Alert, Modal, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { StyleSheet, View, FlatList, SectionList, Text, TouchableOpacity, Button, Alert, Modal, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import AddTodo from '../components/addTodo.js'
@@ -8,10 +8,10 @@ import Creature from '../classes/Creature'
 
 export default function Home({ navigation }) {
   const [todos, setTodos] = useState([
-    { task: 'Default 1', note: '', priority: '0', isComplete: false, key: '1', subItems: [{task: 'Default sub 1.1', note: '', priority: '0', isComplete: false, key: Math.random().toString()}]},
-    { task: 'Default 2', note: '', priority: '0', isComplete: false, key: '2', subItems: [{task: 'Default sub 1.2', note: '', priority: '0', isComplete: false, key: Math.random().toString()}]},
-    { task: 'Default 3', note: '', priority: '0', isComplete: false, key: '3', subItems: [{task: 'Default sub 1.3', note: '', priority: '0', isComplete: false, key: Math.random().toString()}] },
-    { task: 'Default 4', note: '', priority: '0', isComplete: false, key: '4', subItems: [{task: 'Default sub 1.4', priority: '0', isComplete: false, key: Math.random().toString()}] },
+    { task: 'Default 1', note: 'note 1', priority: '0', isComplete: false, creature: new Creature(), key: '1', subItems: [{task: 'Default sub 1.1', note: 'note 1', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
+    { task: 'Default 2', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '2', subItems: [{task: 'Default sub 1.2', note: 'note 2', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
+    { task: 'Default 3', note: 'note3', priority: '0', isComplete: false, creature: new Creature(), key: '3', subItems: [{task: 'Default sub 1.3', note: 'note 3', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
+    { task: 'Default 4', note: 'note', priority: '0', isComplete: false, creature: new Creature(), key: '4', subItems: [{task: 'Default sub 1.4', note: 'note 4', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal

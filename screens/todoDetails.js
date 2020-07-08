@@ -27,17 +27,28 @@ export default function TodoDetails({ route, navigation }){
         navigation.navigate("Tasks")
 
       };
+
     return(
         <View style={{...globalStyles.container, ...styles.container}}>
             <Card>
                 <Text style={styles.itemText}>{item['task']} </Text>
+                {item['note'] !== '' ? 
+                    <Text style={styles.note}>{item['note']}</Text>
+                : null }
             </Card>
+
+
+
+            
+
+
             <FlatList
             data={item.subItems}
-            renderItem = {({item}) =>
+            renderItem = {({item}) => 
                 <View style={styles.subItem}>
                     <Text style={styles.subItemText}>{item.task}</Text>
                 </View>
+            
             }
             />
 
@@ -54,6 +65,9 @@ const styles = StyleSheet.create({
     itemText:{
         fontWeight: 'normal',
         fontSize: 18
+    },
+    noteText:{
+        fontSize: 16
     },
     subItemText:{
         fontWeight: "200", // Light text weight, need to install custom font
