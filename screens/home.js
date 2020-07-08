@@ -7,15 +7,28 @@ import Card from '../shared/card';
 import Creature from '../classes/Creature';
 import { globalStyles } from '../styles/global';
 
-export default function Home({ navigation }) {
+export default function Home({ navigation, route }) {
   const [todos, setTodos] = useState([
     { task: 'Default 1', note: 'note 1', priority: '0', isComplete: false, creature: new Creature(), key: '1', subItems: [{task: 'Default sub 1.1', note: 'note 1', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
     { task: 'Default 2', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '2', subItems: [{task: 'Default sub 1.2', note: 'note 2', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
     { task: 'Default 3', note: 'note3', priority: '0', isComplete: false, creature: new Creature(), key: '3', subItems: [{task: 'Default sub 1.3', note: 'note 3', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
     { task: 'Default 4', note: 'note', priority: '0', isComplete: false, creature: new Creature(), key: '4', subItems: [{task: 'Default sub 1.4', note: 'note 4', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
   ]);
+  // const [todoStats, setTodoStats] = useState([
+  //   { numTasksCompleted: 0, numTasksSet: 0 }
+  // ]);
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
+
+  // On load screen, check if we came from 
+  // From https://reactnavigation.org/docs/params
+  // "Passing params to a previous screen" section
+  React.useEffect(() => {
+    if (route.params?.completed) {
+      completeHandler(route.params.completed['key'],route.params.completed['item'] )
+    }
+  }, [route.params?.completed]);
+
 
   const removeHandler = (key) => { //removes item from list
     setTodos(prevTodos => {

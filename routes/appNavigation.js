@@ -13,6 +13,8 @@ import CreatureDex from '../screens/creatureDex';
 
 const HomeStack = createStackNavigator();
 const ProgressStack = createStackNavigator();
+const CreatureStack = createStackNavigator();
+
 const Tab = createBottomTabNavigator();
 
 
@@ -48,6 +50,18 @@ function HomeStackScreen() {
       </ProgressStack.Navigator>
     )
  }
+
+ function CreatureStackScreen() {
+  return (
+     <CreatureStack.Navigator>
+       <CreatureStack.Screen name="CreatureDex" component={CreatureDex}
+       options={{headerStyle: {
+           backgroundColor: '#0096c7',
+       }, 
+       headerTintColor: '#fff',}} />
+     </CreatureStack.Navigator>
+   )
+}
  
 export default function Navigate()
 {
@@ -78,10 +92,9 @@ export default function Navigate()
               activeTintColor: 'mediumseagreen',
               inactiveTintColor: 'gray',
               activeBackgroundColor: 'aliceblue',
-
             }}
             >
-            <Tab.Screen name="CreatureDex" component={CreatureDex} />
+            <Tab.Screen name="CreatureDex" component={CreatureStackScreen} />
 
             <Tab.Screen name="Tasks" component={HomeStackScreen} />
             <Tab.Screen name="Progress" component={ProgressStackScreen} />

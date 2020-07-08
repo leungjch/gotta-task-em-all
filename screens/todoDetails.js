@@ -12,19 +12,14 @@ import { BaseRouter } from '@react-navigation/native';
 export default function TodoDetails({ route, navigation }){
     const { item } = route.params
 
+    const [completed, setCompleted] = React.useState({item: item, key: item['key']});
 
+
+    // From https://reactnavigation.org/docs/params
+    // "Passing params to a previous screen" section
     const markCompleteHandler = () => {
 
-        // Gives warning if we try to pass function as params
-        // if(item['isComplete'] == false) {
-        //   removeHandler(item.key);
-        //   addCompleteItem(item);
-        // } 
-        // else { //if user changes status form complete to not complete, item goes to top of list
-        //   removeHandler(item.key)
-        //   addItem(item)
-        // }
-        navigation.navigate("Tasks")
+        navigation.navigate("Tasks", {completed: completed})
 
       };
 
@@ -35,12 +30,7 @@ export default function TodoDetails({ route, navigation }){
                 {item['note'] !== '' ? 
                     <Text style={styles.note}>{item['note']}</Text>
                 : null }
-            </Card>
-
-
-
-            
-
+            </Card>            
 
             <FlatList
             data={item.subItems}
