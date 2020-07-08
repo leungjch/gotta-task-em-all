@@ -6,7 +6,7 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
 
 - react-navigation and all of its dependencies
     - Follow steps from [this website](https://reactnavigation.org/docs/getting-started/)
-- react-navigation-stack
+- @react-navigation/stack (if react-navigation not already installed)
+- @react-navigation/bottom-tabs (if react-navigation not already installed)
 - react-native-webview
 - react-native-vector-icons
-- @react-native/bottom-tabs
