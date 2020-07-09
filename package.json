@@ -20,6 +20,7 @@
     "react-datepicker": "^3.0.0",
     "react-native": "^0.62.2",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-get-random-values": "^1.4.0",
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.7",
     "react-native-screens": "^2.9.0",
@@ -27,6 +28,8 @@
     "react-native-webview": "^10.3.2",
     "react-navigation": "^4.4.0",
     "react-navigation-stack": "^2.8.2",
+    "uuid": "^8.2.0",
+    "uuidv4": "^6.1.1",
     "yup": "^0.29.1"
   },
   "devDependencies": {

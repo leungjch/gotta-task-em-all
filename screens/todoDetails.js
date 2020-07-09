@@ -14,13 +14,10 @@ export default function TodoDetails({ route, navigation }){
 
     const [completed, setCompleted] = React.useState({item: item, key: item['key']});
 
-
     // From https://reactnavigation.org/docs/params
     // "Passing params to a previous screen" section
     const markCompleteHandler = () => {
-
         navigation.navigate("Tasks", {completed: completed})
-
       };
 
     return(

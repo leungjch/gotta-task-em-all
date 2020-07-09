@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { StyleSheet, View, FlatList, SectionList, Text, TouchableOpacity, Button, Alert, Modal, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -6,16 +6,16 @@ import AddTodo from '../components/addTodo.js'
 
 import Creature from '../classes/Creature'
 
+import { DispatchContext } from '../contexts/todo/todoContext';
+import { TodosContext } from '../contexts/todo/todoContext'
+import { ADD_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO, REMOVE_TODO } from '../contexts/todo/actions.js';
+
 export default function Home({ navigation, route }) {
-  const [todos, setTodos] = useState([
-    { task: 'Default 1', note: 'note 1', priority: '0', isComplete: false, creature: new Creature(), key: '1', subItems: [{task: 'Default sub 1.1', note: 'note 1', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
-    { task: 'Default 2', note: '', priority: '0', isComplete: false, creature: new Creature(), key: '2', subItems: [{task: 'Default sub 1.2', note: 'note 2', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}]},
-    { task: 'Default 3', note: 'note3', priority: '0', isComplete: false, creature: new Creature(), key: '3', subItems: [{task: 'Default sub 1.3', note: 'note 3', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
-    { task: 'Default 4', note: 'note', priority: '0', isComplete: false, creature: new Creature(), key: '4', subItems: [{task: 'Default sub 1.4', note: 'note 4', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}] },
-  ]);
-  // const [todoStats, setTodoStats] = useState([
-  //   { numTasksCompleted: 0, numTasksSet: 0 }
-  // ]);
+
+
+  // const useTodoState = () => React.useContext(TodoStateContext);
+  const todos = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
 
@@ -24,48 +24,36 @@ export default function Home({ navigation, route }) {
   // "Passing params to a previous screen" section
   React.useEffect(() => {
     if (route.params?.completed) {
-      completeHandler(route.params.completed['key'],route.params.completed['item'] )
+      completeHandler(route.params.completed['item'] )
     }
   }, [route.params?.completed]);
 
-
-  const removeHandler = (key) => { //removes item from list
-    setTodos(prevTodos => {
-      return prevTodos.filter(todo => todo.key != key);
-    });
+  const removeHandler = (item) => { //removes item from list
+    dispatch({ type: REMOVE_TODO, item: item})
   };
 
   const addCompleteItem = (item) => { //adds completed item to the bottom of the list
-    item.isComplete = true;
-    setTodos((currentTodos) => {
-      return [...currentTodos, item];
-    })
+    dispatch({ type: COMPLETE_TODO, item: item })
+  };
+  const undoCompleteItem = (item) => { //adds completed item to the bottom of the list
+    dispatch({ type: UNDO_COMPLETE_TODO, item: item })
   };
 
-  const completeHandler = (key, item) => {
-    if(item.isComplete == false) {
-      removeHandler(key);
+  const completeHandler = (item) => {
+    if(item.isComplete === false) {
+      removeHandler(item);
       addCompleteItem(item);
+      console.log("removed")
+
     } else { //if user changes status form complete to not complete, item goes to top of list
-      removeHandler(key)
-      addItem(item)
+      removeHandler(item)
+      undoCompleteItem(item)
+      console.log("added")
     }
   };
 
   const addItem = (item) => {
-    item.key = Math.random().toString();
-    item.isComplete = false;
-    item.creature = new Creature();
-    item.subItems = [{task: 'Default sub-item', note: '', priority: '0', isComplete: false, creature: new Creature(), key: Math.random().toString()}];
-    if(item.priority == null) {
-      item.priority = 0;
-    }
-    if(item.note == '') {
-      item.note = '';
-    }
-    setTodos((currentTodos) => {
-      return [item, ...currentTodos];
-    })
+    dispatch({ type: ADD_TODO, item: item})
     setModalOpen(false);
   }
 
@@ -90,7 +78,7 @@ export default function Home({ navigation, route }) {
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => {navigation.navigate("Task Details", {item: item})}}>
                 <View style={styles.item}>
-                    <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item.key, item)} />
+                    <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item)} />
                     <Text style={styles.itemText}>{item.task} </Text>
                     <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={styles.itemRemove} />
                 </View>

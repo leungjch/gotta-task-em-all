@@ -71,7 +71,6 @@ export default function AddTodo({ submitHandler }){
                         </Text>
 
                         <Button title="Create Task" onPress={props.handleSubmit} />
-
                    </View>
                )}
            </Formik>

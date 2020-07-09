@@ -17,7 +17,6 @@ const CreatureStack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
-
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>

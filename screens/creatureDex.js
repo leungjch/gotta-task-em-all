@@ -11,7 +11,7 @@ import {
 
 export default function CreatureDex({route, navigation}){
     // const { todos } = route.params
-    
+
     return(
         <View>
         <View style={styles.canvas}>
