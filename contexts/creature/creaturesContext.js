@@ -10,6 +10,16 @@ const initialCreatures = [
   {creature: new Creature(), key: uuidv4()},
   {creature: new Creature(), key: uuidv4()},
   {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
+  {creature: new Creature(), key: uuidv4()},
 ]
 
 export const CreaturesContext = createContext();

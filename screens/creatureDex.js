@@ -2,6 +2,8 @@ import React, {useState, useContext} from 'react';
 
 import { SafeAreaView, StyleSheet, TouchableOpacity, ScrollView, View, Text, StatusBar, FlatList, } from 'react-native';
 
+import { FlatGrid } from 'react-native-super-grid';
+
 import CreatureView from '../components/creatureView'
 
 import { CreaturesDispatchContext } from '../contexts/creature/creaturesContext';
@@ -12,7 +14,6 @@ import { ADD_CREATURE, REMOVE_CREATURE } from '../contexts/creature/creaturesAct
 export default function CreatureDex({route, navigation}){
     const creatures = useContext(CreaturesContext);
     const creaturesDispatch = useContext(CreaturesDispatchContext);
-    console.log(creatures)
     return(
             // {/* <FlatList
             // data={creatures}
@@ -28,13 +29,26 @@ export default function CreatureDex({route, navigation}){
         <View style={{flex: 1}}>
                 {/* <CreatureView creature = {creatures[0]['creature']} />
                 <CreatureView creature = {creatures[1]['creature']} /> */}
+            <FlatGrid
+            itemDimension={110}
+            spacing = {0}
+            data = {creatures}
+            renderItem = {({ item }) => (
+                <View>
+                <Text>{item['key']}</Text>
+                <CreatureView creature = {item['creature']} />
+
+                </View>
+            )}
+            />
+{/* 
             <FlatList
             data={creatures}
             style={{flex: 1}}
             renderItem = {({ item }) => (
                 <CreatureView creature = {item['creature']} />
             )}
-            />
+            /> */}
 
         </View>
 

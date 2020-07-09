@@ -16,7 +16,7 @@ export default class Creature {
         var randSize = 16
 
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
-        this.sprite = new Sprite(randSize, randSize, 'vertical', Math.random()*0.5, Math.ceil(Math.random()*10), 0.001, Math.random(), 1)
+        this.sprite = new Sprite(randSize, randSize, 'vertical', Math.random()*0.5, Math.ceil(Math.random()*10), 0.001, Math.random(), 10)
     }
 
 }

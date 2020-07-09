@@ -22,15 +22,18 @@ export default function CreatureView({creature}) {
     const html = `
     <html>
       <head>
+      <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
       <style>
       body {
         margin-top: 2%;
       }
       canvas {
-        border-radius:25%;
-        width: 25%;
-        margin: auto;
-        display: block;
+        border-radius:20%;
+        width: 100%;
+        height: 100%;
+
+        // margin: auto;
+        // display: block;
       }
       p {
         font-size:100px;
@@ -40,7 +43,7 @@ export default function CreatureView({creature}) {
 
       </head>
       <body>
-        <canvas width="${900}" id="canvas" height="${900}"/>
+        <canvas width="${100}" id="canvas" height="${100}"/>
       </body>
 
 
@@ -56,8 +59,8 @@ export default function CreatureView({creature}) {
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
   
-  canvas.width = 900
-  canvas.height = 900
+  canvas.width = 100
+  canvas.height = 100
   
   var centerX = SpriteWidth/2;
   var centerY = SpriteHeight/2;
