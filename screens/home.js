@@ -12,7 +12,6 @@ import { ADD_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO, REMOVE_TODO } from '../con
 
 export default function Home({ navigation, route }) {
 
-
   // const useTodoState = () => React.useContext(TodoStateContext);
   const todos = useContext(TodosContext);
   const dispatch = useContext(DispatchContext);
@@ -80,7 +79,7 @@ export default function Home({ navigation, route }) {
                 <View style={styles.item}>
                     <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item)} />
                     <Text style={styles.itemText}>{item.task} </Text>
-                    <Icon name="remove" size = {18} onPress={() => removeHandler(item.key)} style={styles.itemRemove} />
+                    <Icon name="remove" size = {18} onPress={() => removeHandler(item)} style={styles.itemRemove} />
                 </View>
             </TouchableOpacity>
             )}

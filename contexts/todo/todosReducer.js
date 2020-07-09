@@ -5,7 +5,7 @@ import { ADD_TODO, REMOVE_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO } from './acti
 const todosReducer = (state, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [...state, { task: action.item.task, note: action.item.note, priority: '0', isComplete: false,  key: uuidv4(), subItems: [{task: 'Default sub-item', note: '', priority: '0', isComplete: false, key: uuidv4()}] }];
+      return [{ task: action.item.task, note: action.item.note, priority: '0', isComplete: false,  key: uuidv4(), subItems: [{task: 'Default sub-item', note: '', priority: '0', isComplete: false, key: uuidv4()}] }, ...state];
     case REMOVE_TODO:
       return state.filter(todo => todo.key !== action.item.key);
     case COMPLETE_TODO:

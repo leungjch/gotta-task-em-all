@@ -26,5 +26,36 @@ export const globalStyles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 6,
         textAlign: 'center',
-      },
+    },
+    modalContent: {
+        padding: 20,
+        flex: 1,
+        backgroundColor: '#3f72af',
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
+    modalToggle: {
+        alignSelf: 'center',
+        position: 'absolute',
+        top: 50,
+    },
+    item: {
+        backgroundColor: "#fff",
+        padding: 16,
+        borderRadius: 6,
+        elevation: 3,
+        shadowOffset: { width: 1, height: 1 },
+        shadowColor: '#333',
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        marginHorizontal: 4,
+        marginVertical: 6,
+        flexDirection: 'row',
+    },
+    itemText: {
+        marginLeft: 10,
+    },
+    itemRemove: {
+        marginLeft: 'auto'
+    }
 })

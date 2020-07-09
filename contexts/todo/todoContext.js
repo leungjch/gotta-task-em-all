@@ -8,7 +8,6 @@ const initialTodos = [
   { task: 'Default 4', note: 'note', priority: '0', isComplete: false, key: '4', subItems: [{task: 'Default sub 1.4', note: 'note 4', priority: '0', isComplete: false, key: Math.random().toString()}] }, 
 ]
 
-
 export const TodosContext = React.createContext();
 export const DispatchContext = React.createContext();
 

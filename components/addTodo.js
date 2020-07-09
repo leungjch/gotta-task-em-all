@@ -1,22 +1,12 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { View, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { Input } from 'react-native-elements';
 import { globalStyles } from '../styles/global';
-//import DatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';
+import ReactDOM, { render } from 'react-dom';
 
-import { Formik } from 'formik';
+import { Field, Form, Formik, FormikProps } from 'formik';
 import * as yup from 'yup';
-/*
-const DatePickerField = ({ name, value, onCange }) => {
-    return (
-        <DatePicker
-            selected={(value && new Date(value) || null)}
-            onChange={val => {
-                onChange(name, val);
-            }}
-        />
-    );
-};
-*/
 
 const itemSchema = yup.object({
     task: yup.string().required(),
@@ -29,14 +19,14 @@ export default function AddTodo({ submitHandler }){
         <View>
             <Text style={styles.instructionText}>Fill in the input fields. </Text>
             <Text style={styles.instructionText2} >* means the field is required</Text>
-           <Formik
-                initialValues={{task: '', note: '', priority: ''}} //add due-date and repetition later
-                validationSchema={itemSchema}
-                onSubmit={(values, actions) => {
-                    actions.resetForm();
-                    submitHandler(values);
-                }}
-           >
+            <Formik
+                    initialValues={{task: '', note: '', priority: ''}} //add due-date and repetition later
+                    validationSchema={itemSchema}
+                    onSubmit={(values, actions) => {
+                        actions.resetForm();
+                        submitHandler(values);
+                    }}
+            >
                {(props) => (
                    <View>
                        <TextInput  
@@ -77,6 +67,8 @@ export default function AddTodo({ submitHandler }){
         </View>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     input: {
