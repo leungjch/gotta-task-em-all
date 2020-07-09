@@ -77,8 +77,10 @@ export default function Home({ navigation, route }) {
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => {navigation.navigate("Task Details", {item: item})}}>
                 <View style={styles.item}>
-                    <Icon name={item.isComplete === true ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item)} />
-                    <Text style={styles.itemText}>{item.task} </Text>
+                    <Icon name={item.isComplete ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item)} />
+                    <Text style={[styles.itemText, item.isComplete ? styles.itemTextComplete : styles.itemTextIncomplete]}>
+                      {item.task} 
+                    </Text>
                     <Icon name="remove" size = {18} onPress={() => removeHandler(item)} style={styles.itemRemove} />
                 </View>
             </TouchableOpacity>
@@ -127,8 +129,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
 
 },
+// this is unused because I needed conditional rendering of line-through when task completed
 itemText: {
     marginLeft: 10,
+},
+itemTextComplete: {
+  textDecorationLine : 'line-through', 
+  color: '#bdc3c7'
+},
+itemTextIncomplete: {
+  textDecorationLine : 'none',
+  color: '#34495e'
 },
 itemRemove: {
     marginLeft: 'auto'

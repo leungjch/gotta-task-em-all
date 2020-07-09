@@ -23,7 +23,7 @@ export default function TodoDetails({ route, navigation }){
     return(
         <View style={{...globalStyles.container, ...styles.container}}>
             <Card>
-                <Text style={styles.itemText}>{item['task']} </Text>
+                <Text style={[styles.itemText, item.isComplete ? styles.itemTextComplete : styles.itemTextIncomplete]}>{item['task']} </Text>
                 {item['note'] !== '' ? 
                     <Text style={styles.note}>{item['note']}</Text>
                 : null }
@@ -39,7 +39,7 @@ export default function TodoDetails({ route, navigation }){
             }
             />
 
-            <Button color='#3f72af' title="Mark Complete" onPress={markCompleteHandler}/> 
+            <Button color='#3f72af' title={item.isComplete ? "Mark Incomplete" : "Mark Complete"} onPress={markCompleteHandler}/> 
         </View>
     )
 }
@@ -52,6 +52,14 @@ const styles = StyleSheet.create({
     itemText:{
         fontWeight: 'normal',
         fontSize: 18
+    },
+    itemTextComplete: {
+        textDecorationLine : 'line-through', 
+        color: '#bdc3c7'
+      },
+    itemTextIncomplete: {
+    textDecorationLine : 'none',
+    color: '#34495e'
     },
     noteText:{
         fontSize: 16
