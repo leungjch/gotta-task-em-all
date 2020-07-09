@@ -35,7 +35,6 @@ export default function TodoDetails({ route, navigation }){
                 <View style={styles.subItem}>
                     <Text style={styles.subItemText}>{item.task}</Text>
                 </View>
-            
             }
             />
 
