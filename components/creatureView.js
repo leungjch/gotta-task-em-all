@@ -52,7 +52,6 @@ export default function CreatureView({creature}) {
   
   var SpriteWidth = ${creature.sprite.spriteWidth};
   var SpriteHeight = ${creature.sprite.spriteHeight};
-
   var SpriteSheet = ${JSON.stringify(creature.sprite.spriteSheet)}
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
@@ -126,8 +125,9 @@ export default function CreatureView({creature}) {
   `; 
   return (
         <WebView source={{ html }}
+                scrollEnabled={false}
                 injectedJavaScript={jsCode}
-                style={{ backgroundColor: 'transparent'}}
+                style={{ backgroundColor: 'transparent', width: "100%", height:100}}
                 originWhitelist={['*']}
                 javaScriptEnabledAndroid={ true }
 

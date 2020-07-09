@@ -6,15 +6,15 @@ import AddTodo from '../components/addTodo.js'
 
 import Creature from '../classes/Creature'
 
-import { DispatchContext } from '../contexts/todo/todoContext';
-import { TodosContext } from '../contexts/todo/todoContext'
-import { ADD_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO, REMOVE_TODO } from '../contexts/todo/actions.js';
+import { TodosDispatchContext } from '../contexts/todo/todosContext';
+import { TodosContext } from '../contexts/todo/todosContext'
+import { ADD_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO, REMOVE_TODO } from '../contexts/todo/todosActions';
 
 export default function Home({ navigation, route }) {
 
   // const useTodoState = () => React.useContext(TodoStateContext);
   const todos = useContext(TodosContext);
-  const dispatch = useContext(DispatchContext);
+  const todosDispatch = useContext(TodosDispatchContext);
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
 
@@ -28,31 +28,29 @@ export default function Home({ navigation, route }) {
   }, [route.params?.completed]);
 
   const removeHandler = (item) => { //removes item from list
-    dispatch({ type: REMOVE_TODO, item: item})
+    todosDispatch({ type: REMOVE_TODO, item: item})
   };
 
   const addCompleteItem = (item) => { //adds completed item to the bottom of the list
-    dispatch({ type: COMPLETE_TODO, item: item })
+    todosDispatch({ type: COMPLETE_TODO, item: item })
   };
   const undoCompleteItem = (item) => { //adds completed item to the bottom of the list
-    dispatch({ type: UNDO_COMPLETE_TODO, item: item })
+    todosDispatch({ type: UNDO_COMPLETE_TODO, item: item })
   };
 
   const completeHandler = (item) => {
     if(item.isComplete === false) {
       removeHandler(item);
       addCompleteItem(item);
-      console.log("removed")
 
     } else { //if user changes status form complete to not complete, item goes to top of list
       removeHandler(item)
       undoCompleteItem(item)
-      console.log("added")
     }
   };
 
   const addItem = (item) => {
-    dispatch({ type: ADD_TODO, item: item})
+    todosDispatch({ type: ADD_TODO, item: item})
     setModalOpen(false);
   }
 

@@ -44,7 +44,6 @@ export default function TodoDetails({ route, navigation }){
     )
 }
 
-
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#a6dcef',

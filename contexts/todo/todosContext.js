@@ -9,16 +9,16 @@ const initialTodos = [
 ]
 
 export const TodosContext = React.createContext();
-export const DispatchContext = React.createContext();
+export const TodosDispatchContext = React.createContext();
 
 export function TodosProvider(props) {
-    const [todos, dispatch] = useReducer(todosReducer, initialTodos);
+    const [todos, todosDispatch] = useReducer(todosReducer, initialTodos);
   
     return (
       <TodosContext.Provider value={todos}>
-        <DispatchContext.Provider value={dispatch}>
+        <TodosDispatchContext.Provider value={todosDispatch}>
           {props.children}
-        </DispatchContext.Provider>
+        </TodosDispatchContext.Provider>
       </TodosContext.Provider>
     );
   }

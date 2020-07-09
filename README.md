@@ -8,11 +8,13 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
     - Follow steps from [this website](https://reactnavigation.org/docs/getting-started/)
 - @react-navigation/stack (if react-navigation not already installed)
 - @react-navigation/bottom-tabs (if react-navigation not already installed)
+- @react-native-community/async-storage
 - react-native-webview
 - react-native-vector-icons
 - react-native-elements
 - formik
 - yup
+- 'react-native-get-random-values' (must be imported before uuidv4)
 - uuidv4
 
 
