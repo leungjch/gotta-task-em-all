@@ -8,6 +8,7 @@ export default class Creature {
         this.exp = 0;
         this.health = 100;
 
+        this.todosMade = ['study', 'for', 'exams', 'abcdefghijklmnopqrstuvwxyz']
         var data = require('../scripts/pokemon.json')
 
         this.markov = new MarkovChain(data)
@@ -19,29 +20,40 @@ export default class Creature {
         // Size is correlated with rarity
         
         // min size: 4
-        var randSize = Math.ceil(Math.random()*32)+8
+        var randSize = Math.ceil(Math.random()*32)+16
 
-        var index = Math.floor(Math.random()*5)
+        var index = Math.floor(Math.random()*6)
+        // index = 3
         var symmetry;
-        switch (index)
+        console.log(index)
+        if (index === 0)
         {
-            case 0:
-                symmetry = "none"
-            case 1:
-                symmetry = "diagonal_left"
-            case 2:
-                symmetry = "diagonal_right"
-            case 3:
-                symmetry = "horizontal"
-            case 4:
-                symmetry = "vertical"
-            case 5:
-                symmetry = "quad"
+            symmetry = "none"
         }
-
+        else if (index === 1)
+        {
+            symmetry = "diagonal_left"
+        }
+        else if (index === 2)
+        {
+            symmetry = "diagonal_right"
+        }
+        else if (index === 3)
+        {
+            symmetry = "vertical"
+        }
+        else if (index === 4)
+        {
+            symmetry = "horizontal"
+        }
+        else if (index === 5)
+        {
+            symmetry = "quad"
+        }
+        console.log(symmetry)
 
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
-        this.sprite = new Sprite(randSize, randSize, symmetry, Math.random()*0.5, Math.ceil(Math.random()*10), Math.random()*0.2, Math.random(), 10+Math.ceil(Math.random()*15))
+        this.sprite = new Sprite(randSize, randSize, symmetry, Math.random()*0.2, Math.ceil(Math.random()*10), Math.random()*0.4+0.05, Math.random(), 60+Math.ceil(Math.random()*15))
     }
 
 }

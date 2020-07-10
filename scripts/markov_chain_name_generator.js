@@ -33,13 +33,16 @@ export default class MarkovChain
         for (let i = 0; i < freqMatrix.length; i++)
         {
             var sum = freqMatrix[i].reduce((a, b) => a + b, 0);
+            if (sum === 0)
+            {
+                sum = 1
+            }
             for (let j = 0; j < freqMatrix[0].length; j++)
             {
                 transitionMatrix[i][j] = freqMatrix[i][j]/sum
             }
         }
         this.transitionMatrix = transitionMatrix
-
     }
     predict(n, min, max)
     {
@@ -63,6 +66,7 @@ export default class MarkovChain
                     // sample our probabilty distribution
                     for (let i = 0; i < this.transitionMatrix[currentCharCode].length; i++)
                     {
+                        
                         total += this.transitionMatrix[currentCharCode][i]
                         if (sample < total)
                         {

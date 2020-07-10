@@ -17,12 +17,12 @@ export default function CreatureDex({route, navigation}){
         <View style={{flex: 1}}>
             <FlatGrid
             itemDimension={110}
-            spacing = {0}
+            spacing = {10}
             data = {creatures}
             renderItem = {({ item }) => (
-                <View>
-                <Text>{item['creature']['name']}</Text>
+                <View style = {styles.box}>
                 <CreatureView creature = {item['creature']} />
+                <Text style = {styles.creatureName}>{item['creature']['name']}</Text>
 
                 </View>
             )}
@@ -37,6 +37,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // flex: 1
     
+    },
+    box:{
+        backgroundColor: "#3f72af",
+        borderRadius: 10,
+
+    },
+    creatureName:{
+        color: "#FFFFFF",
+        margin:10
     },
     canvas2:{
         // borderWidth: 2,
