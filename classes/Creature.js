@@ -22,14 +22,20 @@ export default class Creature {
         // min size: 4
         var randSize = 16
 
-        var index = Math.floor(Math.random()*6)
+        var noisescale = 0.4
+        var nColors = 3
+        var speed = Math.random()
+        var seed = Math.random()
+        var nFrames = 8+Math.ceil(Math.random()*0)
+
+        var index = Math.floor(Math.random()*5)
         // index = 3
         var symmetry;
-        console.log(index)
-        index = 3
+        // console.log(index)
+        // index = 3
         if (index === 0)
         {
-            symmetry = "none"
+            symmetry = "quad"
         }
         else if (index === 1)
         {
@@ -49,15 +55,9 @@ export default class Creature {
         }
         else if (index === 5)
         {
-            symmetry = "quad"
+            symmetry = "none"
         }
         console.log(symmetry)
-
-        var noisescale = 0.6
-        var nColors = Math.ceil(Math.random()*10)+2
-        var speed = 0.2
-        var seed = Math.random()
-        var nFrames = 4+Math.ceil(Math.random()*0)
 
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
         this.sprite = new Sprite(randSize, randSize, symmetry, noisescale, nColors, speed, seed, nFrames)

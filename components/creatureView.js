@@ -126,7 +126,8 @@ export default function CreatureView({creature}) {
   {
     frame = 0;
   }
-  },17)
+  // },17)
+  },80)
   `; 
   return (
         <WebView source={{ html: html }}

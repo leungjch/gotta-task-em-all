@@ -24,14 +24,17 @@ export default class Sprite {
         this.speed = speed
 
         // Background colour
-        this.backgroundCol = [255,255,255]
 
         // Generate a color palette from nColours
         this.colors = []
-        randCol = Math.ceil(Math.random()*255)
+        randCol1 = Math.ceil(Math.random()*255)
+        randCol2 = Math.ceil(Math.random()*255)
+        randCol3 = Math.ceil(Math.random()*255)
+        this.backgroundCol = [255-randCol1,255-randCol2,255-randCol3]
+
         for (let i = 0; i < this.nColors; i++)
         {
-            this.colors.push([255,randCol-20*i,255])
+            this.colors.push([randCol1,randCol2-50*i,randCol3])
           // colors.push(color(255, Math.random()*255, Math.random()*255))
         }
 
@@ -119,7 +122,7 @@ export default class Sprite {
                     // If value is greater than falloff, then it is empty (background)
                     if (val > f)
                     {
-                        c = [255,255,255]
+                        c = this.backgroundCol
                     }
                     // If less than falloff, it is part of sprite body
                     else
