@@ -46,8 +46,11 @@ export default class Sprite {
         var centerX = this.spriteWidth/2;
         var centerY = this.spriteHeight/2;
 
+
         var iterW;
         var iterH;
+
+        var offset = Math.random()
 
         if (this.symmetry === "none" || this.symmetry === "diagonal_left" || this.symmetry === "diagonal_right")
         {
@@ -158,7 +161,7 @@ export default class Sprite {
                 }
             }
             // oscillate
-            this.time = (Math.sin((Math.PI/nFrames)*frame))
+            this.time = (Math.sin((Math.PI/nFrames)*frame+offset))*this.speed
             
             // Add a frame of the sprite animation
             this.spriteSheet.push(vals)

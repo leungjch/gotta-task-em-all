@@ -21,7 +21,7 @@ export default function CreatureDex({route, navigation}){
             data = {creatures}
             renderItem = {({ item }) => (
                 <View>
-                <Text>{item['key']}</Text>
+                <Text>{item['creature']['name']}</Text>
                 <CreatureView creature = {item['creature']} />
 
                 </View>

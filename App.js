@@ -13,6 +13,5 @@ export default function App() {
         <Navigate />
       </CreaturesProvider>
     </TodosProvider>
-
   )
 };

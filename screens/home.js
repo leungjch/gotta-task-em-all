@@ -4,8 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import AddTodo from '../components/addTodo.js'
 
-import Creature from '../classes/Creature'
-
 import { TodosDispatchContext } from '../contexts/todo/todosContext';
 import { TodosContext } from '../contexts/todo/todosContext'
 import { ADD_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO, REMOVE_TODO } from '../contexts/todo/todosActions';
