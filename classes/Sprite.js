@@ -23,16 +23,21 @@ export default class Sprite {
         // How fast the creature moves
         this.speed = speed
 
+        // Background colour
+        this.backgroundCol = [255,255,255]
+
         // Generate a color palette from nColours
         this.colors = []
+        randCol = Math.ceil(Math.random()*255)
         for (let i = 0; i < this.nColors; i++)
         {
-            this.colors.push([Math.ceil(Math.random()*200),Math.ceil(Math.random()*200),Math.ceil(Math.random()*200)])
+            this.colors.push([255,randCol-20*i,255])
           // colors.push(color(255, Math.random()*255, Math.random()*255))
         }
 
         // latest time
         this.time = 0;
+
 
         // Stores the animation frames of a creature
         this.spriteSheet = [] 
@@ -45,6 +50,7 @@ export default class Sprite {
     {
         var centerX = this.spriteWidth/2;
         var centerY = this.spriteHeight/2;
+
 
 
         var iterW;
@@ -95,10 +101,19 @@ export default class Sprite {
                     // val = (noise.simplex3(j*noiseScale,i*noiseScale, t)+1)/2;
                     val = (noise.perlin3(j*this.noiseScale,i*this.noiseScale, this.time)+1)/2;
                     // Get pixel distance from center
-                    var distance = 1-Math.sqrt((j-centerX)**2+(i-centerY)**2)/Math.sqrt(centerX**2+centerY**2);
+                    var distance = 1-Math.sqrt((j-centerX)**2+(i-centerY)**2);
 
                     // Set falloff function
-                    var f = distance;
+                    var f = Math.exp(distance/4);
+
+
+                    // Reciprocal distance
+                    // f = 5/(Math.sqrt(1*(j-centerX)**2 + 2*(i-centerY)**2))
+
+                    // Gaussian falloff
+                    // f = 1*Math.exp(-1*0.2*Math.sqrt(2*(j-centerX)**2+(i-centerY)**2)**2)
+
+
                     var c;
 
                     // If value is greater than falloff, then it is empty (background)

@@ -20,12 +20,13 @@ export default class Creature {
         // Size is correlated with rarity
         
         // min size: 4
-        var randSize = Math.ceil(Math.random()*32)+16
+        var randSize = 16
 
         var index = Math.floor(Math.random()*6)
         // index = 3
         var symmetry;
         console.log(index)
+        index = 3
         if (index === 0)
         {
             symmetry = "none"
@@ -52,8 +53,14 @@ export default class Creature {
         }
         console.log(symmetry)
 
+        var noisescale = 0.6
+        var nColors = Math.ceil(Math.random()*10)+2
+        var speed = 0.2
+        var seed = Math.random()
+        var nFrames = 4+Math.ceil(Math.random()*0)
+
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
-        this.sprite = new Sprite(randSize, randSize, symmetry, Math.random()*0.2, Math.ceil(Math.random()*10), Math.random()*0.4+0.05, Math.random(), 60+Math.ceil(Math.random()*15))
+        this.sprite = new Sprite(randSize, randSize, symmetry, noisescale, nColors, speed, seed, nFrames)
     }
 
 }

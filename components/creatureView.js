@@ -56,6 +56,7 @@ export default function CreatureView({creature}) {
   var SpriteWidth = ${creature.sprite.spriteWidth};
   var SpriteHeight = ${creature.sprite.spriteHeight};
   var SpriteSheet = ${JSON.stringify(creature.sprite.spriteSheet)}
+  var Background = ${JSON.stringify(creature.sprite.backgroundCol)}
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
   
@@ -86,13 +87,13 @@ export default function CreatureView({creature}) {
   // Insert image data
   for(var i=0;i<imgdatalen/4;i++){  //iterate over every pixel in the canvas
   
-  // // Shade right hand edge
-  // if (vals[k][l][1] !== 255 && (k+1)%SpriteWidth !== 0 && l < SpriteHeight && vals[k+1][l][1] === 255)
+  // // Shade edges
+
+  // if (vals[k][l][1] !== Background[0] && (k+1)%SpriteWidth !== 0 && l < SpriteHeight && vals[k+1][l][1] === 255)
   // {
-  //   vals[k+1][l][0] = 255
-  //   vals[k+1][l][1] = 255
-  //   vals[k+1][l][2] = 0
-    
+  //   vals[k+1][l][0] = Background[0]
+  //   vals[k+1][l][1] = Background[1]
+  //   vals[k+1][l][2] = Background[2]
   // }
   imgdata.data[4*i] = Math.floor(vals[k][l][0]);    // RED (0-255)
   imgdata.data[4*i+1] = Math.floor(vals[k][l][1]);    // GREEN (0-255)
@@ -110,8 +111,9 @@ export default function CreatureView({creature}) {
   ctx.putImageData(imgdata,0,0);
   
   // Unexpected behaviour
-  ctx.drawImage(canvas, 0,0,Width/SpriteWidth*canvas.width, Height/SpriteHeight*canvas.height)
   ctx.imageSmoothingEnabled = false
+
+  ctx.drawImage(canvas, 0,0,Width/SpriteWidth*canvas.width, Height/SpriteHeight*canvas.height)
   var d = new Date();
   
   // Animation
@@ -127,7 +129,7 @@ export default function CreatureView({creature}) {
   },17)
   `; 
   return (
-        <WebView source={{ html }}
+        <WebView source={{ html: html }}
                 scrollEnabled={false}
                 injectedJavaScript={jsCode}
                 style={{ backgroundColor: 'transparent', width: "100%", height:100}}

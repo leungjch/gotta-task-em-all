@@ -36,12 +36,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         // flex: 1
-    
     },
     box:{
         backgroundColor: "#3f72af",
         borderRadius: 10,
-
     },
     creatureName:{
         color: "#FFFFFF",
