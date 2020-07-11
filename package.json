@@ -23,6 +23,7 @@
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.13.1",
     "react-native": "^0.62.2",
+    "react-native-charts-wrapper": "^0.5.7",
     "react-native-elements": "^2.0.4",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-get-random-values": "^1.4.0",
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
+    "@babel/runtime": "^7.10.4",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
     "eslint": "^6.5.1",

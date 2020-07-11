@@ -10,7 +10,7 @@ const userReducer = (state, action) => {
       var newLvl = state['lvl']
       var newExpNextLvl = state['expNextLvl']
       console.log(state['expNextLvl'])
-      if (newExp > state['expNextLvl'])
+      if (newExp >= state['expNextLvl'])
       {
         newExp = 0
         newLvl += 1

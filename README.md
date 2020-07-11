@@ -18,5 +18,6 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
 - uuidv4
 - react-native-super-grid
 - moment
+- react-native-charts-wrapper
 
 
