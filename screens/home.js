@@ -41,7 +41,9 @@ export default function Home({ navigation, route }) {
   const addCompleteItem = (item) => { //adds completed item to the bottom of the list
     todosDispatch({ type: COMPLETE_TODO, item: item })
     userDispatch({ type: ADD_EXP, addExp: 10, addTask: 1})
-    console.log(user['exp'])
+    // console.log(user['exp'])
+    console.log(user['cumulativeExpHistory'])
+
   };
   const undoCompleteItem = (item) => { //adds completed item to the bottom of the list
     todosDispatch({ type: UNDO_COMPLETE_TODO, item: item })
