@@ -23,7 +23,6 @@ export default function Home({ navigation, route }) {
   const user = useContext(UserContext);
   const userDispatch = useContext(UserDispatchContext);
 
-
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
 
   // On load screen, check if we came from 
@@ -41,7 +40,7 @@ export default function Home({ navigation, route }) {
 
   const addCompleteItem = (item) => { //adds completed item to the bottom of the list
     todosDispatch({ type: COMPLETE_TODO, item: item })
-    userDispatch({ type: ADD_EXP, addExp: 10})
+    userDispatch({ type: ADD_EXP, addExp: 10, addTask: 1})
     console.log(user['exp'])
   };
   const undoCompleteItem = (item) => { //adds completed item to the bottom of the list
@@ -63,7 +62,6 @@ export default function Home({ navigation, route }) {
     todosDispatch({ type: ADD_TODO, item: item})
     setModalOpen(false);
   }
-
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -76,6 +74,8 @@ export default function Home({ navigation, route }) {
             </View>
           </TouchableWithoutFeedback>
         </Modal>
+        <Text>XP: {user['exp']}</Text>
+        <Text>LVL: {user['lvl']}</Text>
 
         <Button color='#3f72af' title="Add Item" onPress={() => setModalOpen(true)}/> 
 
@@ -85,11 +85,11 @@ export default function Home({ navigation, route }) {
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => {navigation.navigate("Task Details", {item: item})}}>
                 <View style={styles.item}>
-                    <Icon name={item.isComplete ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {22} onPress = {() => completeHandler(item)} />
+                    <Icon name={item.isComplete ? "check-box" : "check-box-outline-blank"} color="#3f72af" size = {25} onPress = {() => completeHandler(item)} />
                     <Text style={[styles.itemText, item.isComplete ? styles.itemTextComplete : styles.itemTextIncomplete]}>
                       {item.task} 
                     </Text>
-                    <Icon name="remove" size = {18} onPress={() => removeHandler(item)} style={styles.itemRemove} />
+                    <Icon name="remove" size = {20} onPress={() => removeHandler(item)} style={styles.itemRemove} />
                 </View>
             </TouchableOpacity>
             )}
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   item: {
     // backgroundColor: "#caf0f8",
     backgroundColor: "#fff",
-    padding: 16,
+    padding: 8,
     borderRadius: 6,
     elevation: 3,
     shadowOffset: { width: 1, height: 1 },

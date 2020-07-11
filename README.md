@@ -17,5 +17,6 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
 - 'react-native-get-random-values' (must be imported before uuidv4)
 - uuidv4
 - react-native-super-grid
+- moment
 
 

@@ -3,7 +3,7 @@ import userReducer from './userReducer'
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
-const initialUser = {key: uuidv4(), exp: 0, lvl: 0, currency: 0}
+const initialUser = {key: uuidv4(), exp: 0, lvl: 0, expNextLvl: 10, currency: 0, tasksCompleted: 0, creaturesCollected: 0}
 
 export const UserContext = createContext();
 export const UserDispatchContext = createContext();
