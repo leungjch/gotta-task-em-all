@@ -34,7 +34,7 @@ export default class Sprite {
 
         for (let i = 0; i < this.nColors; i++)
         {
-            this.colors.push([randCol1,randCol2-50*i,randCol3])
+            this.colors.push([randCol1-10*i,randCol2-50*i,randCol3-10*i])
           // colors.push(color(255, Math.random()*255, Math.random()*255))
         }
 
@@ -53,8 +53,6 @@ export default class Sprite {
     {
         var centerX = this.spriteWidth/2;
         var centerY = this.spriteHeight/2;
-
-
 
         var iterW;
         var iterH;
@@ -107,7 +105,7 @@ export default class Sprite {
                     var distance = 1-Math.sqrt((j-centerX)**2+(i-centerY)**2);
 
                     // Set falloff function
-                    var f = Math.exp(distance/4);
+                    var f = Math.exp(distance/(this.spriteWidth/4));
 
 
                     // Reciprocal distance

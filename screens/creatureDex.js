@@ -16,7 +16,7 @@ export default function CreatureDex({route, navigation}){
     return(
         <View style={{flex: 1}}>
             <FlatGrid
-            itemDimension={110}
+            itemDimension={100}
             spacing = {10}
             data = {creatures}
             renderItem = {({ item }) => (
@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
     box:{
         backgroundColor: "#3f72af",
         borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'    
     },
     creatureName:{
         color: "#FFFFFF",

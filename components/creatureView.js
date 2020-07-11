@@ -89,11 +89,14 @@ export default function CreatureView({creature}) {
   
   // // Shade edges
 
+  // if (vals[k][l][1] === Background[0] && vals[k][l][1] === Background[1] && vals[k][l][1] === Background[2] &&
+  //     k+1 > 0 && k+1 < SpriteWidth && l > 0)
   // if (vals[k][l][1] !== Background[0] && (k+1)%SpriteWidth !== 0 && l < SpriteHeight && vals[k+1][l][1] === 255)
   // {
-  //   vals[k+1][l][0] = Background[0]
-  //   vals[k+1][l][1] = Background[1]
-  //   vals[k+1][l][2] = Background[2]
+  //   vals[k+1][l][0] = 0
+  //   vals[k+1][l][1] = 0
+  //   vals[k+1][l][2] = 0
+    
   // }
   imgdata.data[4*i] = Math.floor(vals[k][l][0]);    // RED (0-255)
   imgdata.data[4*i+1] = Math.floor(vals[k][l][1]);    // GREEN (0-255)
@@ -126,17 +129,15 @@ export default function CreatureView({creature}) {
   {
     frame = 0;
   }
-  // },17)
-  },80)
+  },60)
   `; 
   return (
         <WebView source={{ html: html }}
                 scrollEnabled={false}
                 injectedJavaScript={jsCode}
-                style={{ backgroundColor: 'transparent', width: "100%", height:100}}
+                style={{ backgroundColor: 'transparent', width: 100, height:100}}
                 originWhitelist={['*']}
                 javaScriptEnabledAndroid={ true }
-
                 />
   );
 }

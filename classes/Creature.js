@@ -20,13 +20,13 @@ export default class Creature {
         // Size is correlated with rarity
         
         // min size: 4
-        var randSize = 16
+        var randSize = 32
 
-        var noisescale = 0.4
-        var nColors = 3
+        var noisescale = Math.random()*0.3 + 0.2
+        var nColors = 4
         var speed = Math.random()
         var seed = Math.random()
-        var nFrames = 8+Math.ceil(Math.random()*0)
+        var nFrames = 20+Math.ceil(Math.random()*0)
 
         var index = Math.floor(Math.random()*5)
         // index = 3
