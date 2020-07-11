@@ -4,15 +4,25 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import AddTodo from '../components/addTodo.js'
 
+// Get global states
 import { TodosDispatchContext } from '../contexts/todo/todosContext';
 import { TodosContext } from '../contexts/todo/todosContext'
 import { ADD_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO, REMOVE_TODO } from '../contexts/todo/todosActions';
+
+import { UserDispatchContext } from '../contexts/user/userContext';
+import { UserContext } from '../contexts/user/userContext'
+import { ADD_EXP } from '../contexts/user/userActions';
+
 
 export default function Home({ navigation, route }) {
 
   // const useTodoState = () => React.useContext(TodoStateContext);
   const todos = useContext(TodosContext);
   const todosDispatch = useContext(TodosDispatchContext);
+
+  const user = useContext(UserContext);
+  const userDispatch = useContext(UserDispatchContext);
+
 
   const [modalOpen, setModalOpen] = useState(false); //used for the modal
 
@@ -31,6 +41,8 @@ export default function Home({ navigation, route }) {
 
   const addCompleteItem = (item) => { //adds completed item to the bottom of the list
     todosDispatch({ type: COMPLETE_TODO, item: item })
+    userDispatch({ type: ADD_EXP, addExp: 10})
+    console.log(user['exp'])
   };
   const undoCompleteItem = (item) => { //adds completed item to the bottom of the list
     todosDispatch({ type: UNDO_COMPLETE_TODO, item: item })

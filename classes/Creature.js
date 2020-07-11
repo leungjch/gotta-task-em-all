@@ -23,10 +23,10 @@ export default class Creature {
         var randSize = 32
 
         var noisescale = Math.random()*0.3 + 0.2
-        var nColors = 4
+        var nColors = 5
         var speed = Math.random()
         var seed = Math.random()
-        var nFrames = 20+Math.ceil(Math.random()*0)
+        var nFrames = 10+Math.ceil(Math.random()*0)
 
         var index = Math.floor(Math.random()*5)
         // index = 3

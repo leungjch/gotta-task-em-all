@@ -16,7 +16,7 @@ export default function CreatureDex({route, navigation}){
     return(
         <View style={{flex: 1}}>
             <FlatGrid
-            itemDimension={100}
+            itemDimension={150}
             spacing = {10}
             data = {creatures}
             renderItem = {({ item }) => (

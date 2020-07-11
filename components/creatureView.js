@@ -32,8 +32,8 @@ export default function CreatureView({creature}) {
         width: 100%;
         height: 100%;
 
-        // margin: auto;
-        // display: block;
+        margin: auto;
+        display: block;
       }
       p {
         font-size:100px;
@@ -129,15 +129,15 @@ export default function CreatureView({creature}) {
   {
     frame = 0;
   }
-  },60)
+  },17)
   `; 
   return (
-        <WebView source={{ html: html }}
-                scrollEnabled={false}
-                injectedJavaScript={jsCode}
-                style={{ backgroundColor: 'transparent', width: 100, height:100}}
-                originWhitelist={['*']}
-                javaScriptEnabledAndroid={ true }
-                />
-  );
+    <WebView source={{ html: html }}
+            scrollEnabled={false}
+            injectedJavaScript={jsCode}
+            style={{ backgroundColor: 'transparent', width:100, height:100}}
+            originWhitelist={['*']}
+            javaScriptEnabledAndroid={ true }
+            />
+);
 }
