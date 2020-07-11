@@ -4,8 +4,6 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 
-
-
 const initialUser = {key: uuidv4(), exp: 10, lvl: 0, expNextLvl: 10, currency: 0, 
                     tasksCompleted: 0, creaturesCollected: 0, 
                     cumulativeExpHistory: [{x: Math.floor(Date.now()/1000)-500, y: 0},

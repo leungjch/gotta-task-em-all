@@ -65,23 +65,6 @@ export default function Progress({ navigation, route }) {
         <Text>Total Tasks Completed: {user['tasksCompleted']}</Text>
         <Text>Creatures Collected: {creatures.length}</Text>
 
-        {/* <View style={styles.container}>
-          <BarChart
-            style={styles.chart}
-            data={state.data}
-            xAxis={state.xAxis}
-            animation={{durationX: 500}}
-            legend={state.legend}
-            gridBackgroundColor={processColor('#ffffff')}
-            visibleRange={{x: { min: 0, max: 7 }}}
-            drawBarShadow={false}
-            drawValueAboveBar={true}
-            drawHighlightArrow={true}
-            scaleEnabled={false}
-            // onSelect={this.handleSelect.bind(this)}
-            highlights={state.highlights}
-          />
-        </View> */}
           <View style={styles.container}>
           <LineChart style={styles.chart}
           drawGridBackground={false}
@@ -92,25 +75,14 @@ export default function Progress({ navigation, route }) {
 
           data={{
             dataSets: [{
-              // values: [
-              //   { x: 1594485267, y: 0.88 },
-              //   { x: 1594586500, y: 0.58 },
-              //   { x: 1594586600, y: 0.9 },
-              //   { x: 1594586700, y: 2.8 },
-
-
-              //   { x: 1594697300, y: 0.28 },
-              //   { x: 1594798350, y: 0.100 },
-
-              // ],
+              // values: [{ x: 1594485267, y: 0.88 },{ x: 1594586500, y: 0.58 },{ x: 1594586600, y: 0.9 },{ x: 1594586700, y: 2.8 },{ x: 1594697300, y: 0.28 },{ x: 1594798350, y: 0.100 }],
               values: user['cumulativeExpHistory'],
               // values: user['frequencyExpHistory'],
 
               label: 'XP',
               config:{
                 lineWidth: 1,
-                circleRadius: 10,
-
+                circleRadius: 7,
                 // drawFilled: true,
                 drawFilled: true,
 
@@ -126,8 +98,8 @@ export default function Progress({ navigation, route }) {
           xAxis={{
             valueFormatter: 'date',
             // valueFormatterPattern:'yyyy/MM/dd HH:mm:ss',
-            // valueFormatterPattern: "HH:mm dd-MM",
-            valueFormatterPattern: "HH:mm",
+            valueFormatterPattern: "HH:mm dd-MM",
+            // valueFormatterPattern: "HH:mm",
             drawGridLines: false,
             // valueFormatterPattern: "dd-MM-YYYY",
             // valueFormatterPattern: "mm:ss",

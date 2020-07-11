@@ -57,7 +57,6 @@ export default class Creature {
         {
             symmetry = "none"
         }
-        console.log(symmetry)
 
         //  width, height, symmetry, noiseScale, nColours, speed, seed, nFrames
         this.sprite = new Sprite(randSize, randSize, symmetry, noisescale, nColors, speed, seed, nFrames)

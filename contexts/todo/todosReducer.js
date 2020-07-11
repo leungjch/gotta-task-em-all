@@ -4,11 +4,10 @@ import { ADD_TODO, REMOVE_TODO, COMPLETE_TODO, UNDO_COMPLETE_TODO } from './todo
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
 
-
 const todosReducer = (state, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [{ task: action.item.task, note: action.item.note, priority: '0', isComplete: false, creationDate: Date.now(), key: uuidv4(), subItems: [{task: 'Default sub-item', note: '', priority: '0', isComplete: false, creationDate: Date.now(), key: uuidv4()}] }, ...state];
+      return [{ task: action.item.task, note: action.item.note, priority: '0', isComplete: false, creationDate: Math.floor(Date.now()), key: uuidv4(), subItems: [{task: 'Default sub-item', note: '', priority: '0', isComplete: false, creationDate: Math.floor(Date.now()), key: uuidv4()}] }, ...state];
     case REMOVE_TODO:
       return state.filter(todo => todo.key !== action.item.key);
     case COMPLETE_TODO:
