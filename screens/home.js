@@ -67,15 +67,22 @@ export default function Home({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+          <Modal 
+          visible={modalOpen} 
+          animationType='fade' 
+          style={styles.modal} transparent>
+            <View style={styles.modalContainer}>
 
-        <Modal visible={modalOpen} animationType='slide' style={styles.modal}>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.modalContent}>
-              <Icon style={styles.modalToggle} name="close" size={30} onPress={() => setModalOpen(false)} />
-              <AddTodo submitHandler={addItem} />
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+              <View style={styles.modalContent}>
+                <Icon style={styles.modalToggle} name="close" size={30} onPress={() => setModalOpen(false)} />
+                <AddTodo submitHandler={addItem} />
+              </View>
+            </TouchableWithoutFeedback>
             </View>
-          </TouchableWithoutFeedback>
-        </Modal>
+
+          </Modal>
+
         <Text>XP: {user['exp']}</Text>
         <Text>LVL: {user['lvl']}</Text>
 
@@ -106,6 +113,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#a6dcef',
+    
+  },
+  modalContainer:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems:"center",
+    backgroundColor: 'rgba(0,0,0,0.5)'
+
   },
   content: {
     padding: 40,
@@ -115,19 +130,28 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
   },
+  modal: {
+
+  },
   modalContent: {
     padding: 20,
-    flex: 1,
+    width: '75%',
+    backgroundColor:"white",
+    // alignItems: 'center', 
+    // justifyContent: 'center'
+    borderRadius:20,
+
   },
   modalToggle: {
     alignSelf: 'center',
     marginTop: 30,
     marginBottom: 0,
+
   },
   item: {
     // backgroundColor: "#caf0f8",
     backgroundColor: "#fff",
-    padding: 8,
+    padding: 12,
     borderRadius: 6,
     elevation: 3,
     shadowOffset: { width: 1, height: 1 },

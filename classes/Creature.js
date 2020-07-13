@@ -13,6 +13,8 @@ export default class Creature {
 
         this.markov = new MarkovChain(data)
         this.name = this.markov.genNames[0]
+        var capChar = this.name.charAt(0).toUpperCase();
+        this.name = capChar + this.name.slice(1)
 
         // Common, uncommon, rare, epic, legendary
         this.rarity = 0;

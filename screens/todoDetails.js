@@ -30,7 +30,7 @@ export default function TodoDetails({ route, navigation }){
             </Card>            
 
             <FlatList
-            data={item.subItems}
+            data={item.subTasks}
             renderItem = {({item}) => 
                 <View style={styles.subItem}>
                     <Text style={styles.subItemText}>{item.task}</Text>

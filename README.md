@@ -19,5 +19,7 @@ This project was made in collaboration with [Justin Leung](https://github.com/le
 - react-native-super-grid
 - moment
 - react-native-charts-wrapper
+- react-native-date-picker
+- react-native-push-notifications
 
 

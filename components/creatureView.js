@@ -135,6 +135,8 @@ export default function CreatureView({creature}) {
     <WebView source={{ html: html }}
             scrollEnabled={false}
             injectedJavaScript={jsCode}
+            scalesPageToFit={false}
+
             style={{ backgroundColor: 'transparent', width:100, height:100}}
             originWhitelist={['*']}
             javaScriptEnabledAndroid={ true }

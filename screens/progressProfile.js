@@ -61,15 +61,33 @@ export default function Progress({ navigation, route }) {
 
     return (
       <View style={{flex: 1}}>
-        <Text>Your Progress</Text>
-        <Text>Total Tasks Completed: {user['tasksCompleted']}</Text>
-        <Text>Creatures Collected: {creatures.length}</Text>
 
-          <View style={styles.container}>
+        <View style={styles.row}>
+          <View style={[styles.rowItem, {backgroundColor: 'aliceblue'}]}>
+            <Text style={styles.text}>Total Tasks Completed</Text>
+            <Text style={styles.textStat}>{user['tasksCompleted']}</Text>
+          </View>
+          <View style={styles.rowItem}>
+            <Text style={styles.text}>Creatures Collected </Text>
+            <Text style={styles.textStat}>{creatures.length}</Text>
+            </View>
+        </View>
+        <View style={styles.row}>
+          <View style={[styles.rowItem, {backgroundColor: 'aliceblue'}]}>
+            <Text style={styles.text}>Tasks Completed This Week</Text>
+            <Text style={styles.textStat}>{user['tasksCompleted']}</Text>
+          </View>
+          <View style={styles.rowItem}>
+            <Text style={styles.text}>Tasks Completed Today </Text>
+            <Text style={styles.textStat}>{creatures.length}</Text>
+            </View>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.textStat}>Your EXP progress </Text>
           <LineChart style={styles.chart}
           drawGridBackground={false}
-
-          // scaleEnabled={false}
+          chartDescription={{ text: '' }}
+          scaleEnabled={false}
           // visibleRange={ {  x: {    min: user['cumulativeExpHistory'][0]['x'],    max: user['cumulativeExpHistory'][user['cumulativeExpHistory'].length-1]['x']  }}}            
           // visibleRange={ {  x: {    min: 0,    max: user['cumulativeExpHistory'].length-1  }}}            
 
@@ -108,18 +126,41 @@ export default function Progress({ navigation, route }) {
             timeUnit: 'SECONDS',
             position: 'BOTTOM',
             axisMinimum: user['cumulativeExpHistory'][0]['x'],
-            axisMaximum: user['cumulativeExpHistory'][user['cumulativeExpHistory'].length-1]['x']+100,
+            axisMaximum: user['cumulativeExpHistory'][user['cumulativeExpHistory'].length-1]['x'],
             // since: 0
 
-              }}
+          }}
         />
         </View>
+
       </View>
     );
   }
 
   
 const styles = StyleSheet.create({
+  row: {
+    width: '100%', 
+    flexDirection: 'row', 
+    flexWrap: 'wrap',
+    alignContent: 'center'
+  },
+  rowItem: {
+    width: '48%', 
+    margin: '1%', 
+    textAlign: 'center',
+    backgroundColor: 'aliceblue',
+    borderRadius: 10
+    // aspectRatio: 1,
+
+  },
+  text: {
+    textAlign: 'center',
+  },
+  textStat: {
+    textAlign: 'center',
+    fontSize: 24
+  },
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF'

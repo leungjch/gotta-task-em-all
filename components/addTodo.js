@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Button, TouchableHighlight, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 import { Input } from 'react-native-elements';
 import { globalStyles } from '../styles/global';
 import DatePicker from 'react-datepicker';
 import ReactDOM, { render } from 'react-dom';
+import 'react-native-get-random-values';
 
-import { Field, Form, Formik, FormikProps } from 'formik';
+import { v4 as uuidv4 } from 'uuid';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Ionicon from 'react-native-vector-icons/Ionicons';
+
+
+
+import { Field, Form, Formik, FormikProps, FieldArray } from 'formik';
 import * as yup from 'yup';
 
 const itemSchema = yup.object({
@@ -17,10 +24,10 @@ const itemSchema = yup.object({
 export default function AddTodo({ submitHandler }){
     return (
         <View>
-            <Text style={styles.instructionText}>Fill in the input fields. </Text>
-            <Text style={styles.instructionText2} >* means the field is required</Text>
+            {/* <Text style={styles.instructionText}>Fill in the input fields. </Text>
+            <Text style={styles.instructionText2} >* means the field is required</Text> */}
             <Formik
-                    initialValues={{task: '', note: '', priority: ''}} //add due-date and repetition later
+                    initialValues={{task: '', note: '', priority: '0', subTasks: []}} //add due-date and repetition later
                     validationSchema={itemSchema}
                     onSubmit={(values, actions) => {
                         actions.resetForm();
@@ -39,6 +46,52 @@ export default function AddTodo({ submitHandler }){
                         <Text style={globalStyles.errorText}>
                             {props.touched.task && props.errors.task}
                         </Text>
+
+                        <View style={{maxHeight:"30%"}}>
+                        <FlatList
+                        // style={{flex: 1}}
+                        data = {props.values.subTasks}
+                        renderItem = {({item, index}) => {
+                            console.log(item)
+                            return(
+                                <View style={{flexDirection:'row', alignItems:'center', flex: 1}}>
+                                    <TextInput 
+                                    style={[globalStyles.input, {flex: 1, alignItems: 'center', justifyContent: 'center'}]}
+                                    placeholder={`Subtask ${index+1}...`}
+                                    onChangeText={props.handleChange(`subTasks[${index}].text`)}
+                                    onBlur={props.handleBlur(`subTasks[${index}].text`)}
+                                    value={props.values.subTasks[index].text}
+                                    >
+                                    </TextInput>
+                                    <Ionicon name="remove" color="black" size={30} style={{alignSelf: 'center', justifyContent: 'center', alignItems: 'center',}} onPress={() => props.setFieldValue('subTasks', props.values.subTasks.filter(subtask => subtask.key !== props.values.subTasks[index].key)) }  title="P2" />
+
+                                </View>
+
+                            )
+                        }}
+                        >
+                        </FlatList>
+
+                        {/* {props.values.subTasks.map(({ text }, index) => (
+                        <View key = {uuidv4()} style={{flexDirection:'row'}}>
+                            <View key={uuidv4()}>
+                                <TextInput
+                                style={globalStyles.input}
+                                key={uuidv4()}
+                                placeholder={`Subtask ${index+1}...`}
+
+                                onChangeText={props.handleChange(`subTasks[${index}].text`)}
+                                onBlur={props.handleBlur(`subTasks[${index}].text`)}
+                                value={props.values.subTasks[index].text}
+                                />
+
+                            </View>
+                            <View key={uuidv4()}>
+                                <Ionicon name="remove" color="black" size={30} key={uuidv4()} onPress={() => props.setFieldValue('subTasks', props.values.subTasks.filter(subtask => subtask.key !== props.values.subTasks[index].key)) }  title="P2" />
+                            </View>
+                        </View>
+                        ))} */}
+                        </View>
 
                         <TextInput  
                             style={globalStyles.input}
@@ -60,7 +113,33 @@ export default function AddTodo({ submitHandler }){
                             {props.touched.priority && props.errors.priority}
                         </Text>
 
-                        <Button title="Create Task" onPress={props.handleSubmit} />
+
+                        <View style={{flexDirection: 'row', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+                        {/* <Button onPress={() => props.setFieldValue('priority', '2')} title="P2" />
+                        <Button onPress={() => props.setFieldValue('priority', '3')} title="P3" />
+                        <Button onPress={() => props.setFieldValue('priority', '4')} title="P4" /> */}
+
+                        
+                        <Text style={{fontSize:16, marginRight: 30}}>Priority</Text> 
+
+                        <TouchableOpacity>
+                            <Icon name="flag" color="#111111" size={30} style={[styles.priority, props.values.priority=='1' ? styles.prioritySelected : {}]} onPress={() => props.setFieldValue('priority', '1')} title="P1" />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon name="flag" color="#333333" size={30} style={[styles.priority, props.values.priority=='2' ? styles.prioritySelected : {}]} onPress={() => props.setFieldValue('priority', '2')} title="P2" />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon name="flag" color="#555555" size={30} style={[styles.priority, props.values.priority=='3' ? styles.prioritySelected : {}]} onPress={() => props.setFieldValue('priority', '3')} title="P3" />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon name="flag" color="#999999" size={30} style={[styles.priority, props.values.priority=='4' ? styles.prioritySelected : {}]} onPress={() => props.setFieldValue('priority', '4')} title="P4" />
+                        </TouchableOpacity>
+                        
+                        </View>
+                        <Button onPress={() => props.setFieldValue('subTasks', [...props.values.subTasks, {text: '',  key: uuidv4()}])} title="Add subtask" />
+
+
+                        <Button title="Set Task" onPress={props.handleSubmit} />
                    </View>
                )}
            </Formik>
@@ -88,4 +167,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         textAlign: 'center',
     },
+    priority:{
+
+    },
+    prioritySelected:{
+        borderColor:'black',
+        borderWidth:1,
+        borderRadius:5
+    }
 })
