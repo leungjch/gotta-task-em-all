@@ -42,7 +42,7 @@ export default function Home({ navigation, route }) {
     todosDispatch({ type: COMPLETE_TODO, item: item })
     userDispatch({ type: ADD_EXP, addExp: 10, addTask: 1})
     // console.log(user['exp'])
-    console.log(user['cumulativeExpHistory'])
+    // console.log(user['cumulativeExpHistory'])
 
   };
   const undoCompleteItem = (item) => { //adds completed item to the bottom of the list
@@ -62,7 +62,11 @@ export default function Home({ navigation, route }) {
 
   const addItem = (item) => {
     todosDispatch({ type: ADD_TODO, item: item})
+    console.log("Todos is now", todos)
+
     setModalOpen(false);
+
+  // Get current todo list object
   }
   return (
     <View style={styles.container}>

@@ -57,7 +57,7 @@ export default function Progress({ navigation, route }) {
     // };
     
 
-    console.log(user['cumulativeExpHistory'])
+    // console.log(user['cumulativeExpHistory'])
 
     return (
       <View style={{flex: 1}}>

@@ -52,15 +52,14 @@ export default function AddTodo({ submitHandler }){
                         // style={{flex: 1}}
                         data = {props.values.subTasks}
                         renderItem = {({item, index}) => {
-                            console.log(item)
                             return(
                                 <View style={{flexDirection:'row', alignItems:'center', flex: 1}}>
                                     <TextInput 
                                     style={[globalStyles.input, {flex: 1, alignItems: 'center', justifyContent: 'center'}]}
                                     placeholder={`Subtask ${index+1}...`}
-                                    onChangeText={props.handleChange(`subTasks[${index}].text`)}
-                                    onBlur={props.handleBlur(`subTasks[${index}].text`)}
-                                    value={props.values.subTasks[index].text}
+                                    onChangeText={props.handleChange(`subTasks[${index}].task`)}
+                                    onBlur={props.handleBlur(`subTasks[${index}].task`)}
+                                    value={props.values.subTasks[index].task}
                                     >
                                     </TextInput>
                                     <Ionicon name="remove" color="black" size={30} style={{alignSelf: 'center', justifyContent: 'center', alignItems: 'center',}} onPress={() => props.setFieldValue('subTasks', props.values.subTasks.filter(subtask => subtask.key !== props.values.subTasks[index].key)) }  title="P2" />
