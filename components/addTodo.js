@@ -18,7 +18,7 @@ import * as yup from 'yup';
 const itemSchema = yup.object({
     task: yup.string().required(),
     note: yup.string(),
-    priority: yup.string().test('num', 'Must be a number between 1 and 3', (val) => {return ((parseInt(val) < 4 && parseInt(val) > 0) || val == null);}),
+    priority: yup.string().test('num', 'Please select a priority', (val) => {return ((parseInt(val) < 4 && parseInt(val) >= 0) || val == null);}),
 })
 
 export default function AddTodo({ submitHandler }){
@@ -101,14 +101,14 @@ export default function AddTodo({ submitHandler }){
                             value={props.values.note}
                             onBlur={props.handleBlur('note')}
                         />
-                        <TextInput 
+                        {/* <TextInput 
                             style={globalStyles.input}
                             placeholder='Priority (1-3)'
                             onChangeText={props.handleChange('priority')}
                             value={props.values.priority}
                             keyboardType='numeric'
                             onBlur={props.handleBlur('priority')}
-                        />
+                        /> */}
                         <Text style={globalStyles.errorText}>
                             {props.touched.priority && props.errors.priority}
                         </Text>

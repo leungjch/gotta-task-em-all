@@ -86,8 +86,6 @@ export default function Home({ navigation, route }) {
         <Text>XP: {user['exp']}</Text>
         <Text>LVL: {user['lvl']}</Text>
 
-        <Button color='#3f72af' title="Add Item" onPress={() => setModalOpen(true)}/> 
-
         <View style={styles.list}>
           <FlatList
             data={todos}
@@ -104,6 +102,9 @@ export default function Home({ navigation, route }) {
             )}
           />
         </View>
+
+        <Button color='#3f72af' title="+" onPress={() => setModalOpen(true)}/> 
+
       </View>
     </View>
   );
